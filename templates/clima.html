@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Ajustei o gradiente para tons mais escuros para combinar com o estilo SkyRoot -->
+<section class="hero" style="background: linear-gradient(135deg, #2d3436, #000000); color: white; padding: 80px 20px; text-align: center;">
+    <h1 style="text-transform: uppercase; letter-spacing: 5px;">Global Weather Check</h1>
+    <p style="opacity: 0.8; letter-spacing: 1px;">Analise o clima da sua cidade para otimizar o conforto do seu escritório.</p>
+</section>
+
+<div style="max-width: 800px; margin: -40px auto 50px; background: white; padding: 40px; border-radius: 4px; border: 1px solid #eee; box-shadow: 0 15px 35px rgba(0,0,0,0.05); text-align: center;">
+
+    <h3 style="text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px;">Pesquisar Cidade</h3>
+    <div style="margin: 25px 0; display: flex; gap: 10px; justify-content: center;">
+        <input type="text" id="cityInput" placeholder="Ex: Lisboa, Luanda, São Paulo..."
+               style="padding: 15px; width: 60%; border: 2px solid #f2f2f2; border-radius: 4px; font-size: 14px; font-family: 'Inter', sans-serif;">
+        <button onclick="getWeather()" style="padding: 15px 30px; cursor: pointer; border: none; background: #000; color: #fff; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; transition: 0.3s;">
+            Buscar
+        </button>
+    </div>
+
+    <!-- Resultado do clima -->
+    <div id="weatherResult" style="display: none; margin-top: 30px; padding-top: 30px; border-top: 1px solid #eee;">
+        <h2 id="cityName" style="text-transform: uppercase; letter-spacing: 2px; font-size: 1.2rem; color: #888;">---</h2>
+        <div style="font-size: 64px; font-weight: 800; color: #1a1a1a; margin: 10px 0;" id="temp">--°C</div>
+
+        <div style="display: flex; justify-content: center; gap: 30px; margin-top: 20px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #636e72;">
+            <span>💧 Humidade: <span id="humidity" style="color: #000; font-weight: bold;">--</span>%</span>
+            <span>💨 Vento: <span id="wind" style="color: #000; font-weight: bold;">--</span> km/h</span>
+        </div>
+    </div>
+
+    <p style="margin-top: 40px; font-size: 12px; color: #999; font-style: italic; border-top: 1px solid #f9f9f9; padding-top: 20px;">
+        *Utilize estes dados para decidir se necessita de aquecimento, ventilação ou iluminação reforçada para o seu setup hoje.
+    </p>
+</div>
+
+<div style="text-align: center; margin-bottom: 80px;">
+    <a href="/" style="text-decoration: none; color: #888; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px;">← Voltar à Home</a>
+</div>
+
+<script>
+    async function getWeather() {
+        const city = document.getElementById('cityInput').value;
+        const resultDiv = document.getElementById('weatherResult');
+
+        if (!city) return alert("Por favor, introduza o nome de uma cidade.");
+
+        try {
+            // 1. Geocoding API: Transforma nome em coordenadas (URL CORRIGIDO)
+            const geoRes = await fetch(`https://open-meteo.com{city}&count=1&language=pt&format=json`);
+            const geoData = await geoRes.json();
+
+            if (!geoData.results || geoData.results.length === 0) {
+                alert("Cidade não encontrada. Verifique a ortografia.");
+                return;
+            }
+
+            const { latitude, longitude, name, country } = geoData.results[0];
+
+            // 2. Weather API: Busca o clima real (URL CORRIGIDO)
+            // Adicionei '&relative_humidity_2m=true' para termos a humidade real
+            const weatherRes = await fetch(`https://open-meteo.com{latitude}&longitude=${longitude}&current=current_weather,relative_humidity_2m&current_weather=true`);
+            const weatherData = await weatherRes.json();
+
+            // 3. Atualizar o ecrã
+            document.getElementById('cityName').innerText = `${name}, ${country}`;
+            document.getElementById('temp').innerText = `${Math.round(weatherData.current_weather.temperature)}°C`;
+            document.getElementById('wind').innerText = weatherData.current_weather.windspeed;
+
+            // Buscar humidade (agora disponível com o novo parâmetro no fetch)
+            const humidity = weatherData.current.relative_humidity_2m || "--";
+            document.getElementById('humidity').innerText = humidity;
+
+            resultDiv.style.display = "block";
+
+        } catch (error) {
+            console.error(error);
+            alert("Erro na ligação ao serviço meteorológico.");
+        }
+    }
+</script>
+{% endblock %}

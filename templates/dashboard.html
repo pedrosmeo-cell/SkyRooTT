@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="max-width: 1200px; margin: 40px auto; padding: 0 20px; font-family: 'Inter', sans-serif;">
+
+    <!-- TÍTULO E BOTÃO NOVO -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 20px;">
+        <h1 style="font-size: 1.3rem; text-transform: uppercase; letter-spacing: 2px; margin: 0; font-weight: 800;">GESTÃO DE INVENTÁRIO</h1>
+        <a href="/admin" style="background: #000; color: #fff; padding: 12px 25px; text-decoration: none; font-weight: bold; font-size: 0.75rem; border-radius: 2px; letter-spacing: 1px;">+ NOVO PRODUTO</a>
+    </div>
+
+    <!-- BARRA DE SELEÇÃO DE MARCAS (O QUE PEDISTE) -->
+    <div style="margin-bottom: 40px; display: flex; gap: 10px; overflow-x: auto; padding-bottom: 15px; border-bottom: 1px solid #f2f2f2;">
+        <span style="font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; align-self: center; margin-right: 10px; color: #bbb;">Filtrar:</span>
+
+        {% for brand in stores_data.keys() %}
+        <a href="#{{ brand|slugify }}" style="padding: 10px 20px; background: #f9f9f9; color: #000; text-decoration: none; font-size: 0.65rem; font-weight: bold; border-radius: 2px; border: 1px solid #eee; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;"
+           onmouseover="this.style.background='#000'; this.style.color='#fff';"
+           onmouseout="this.style.background='#f9f9f9'; this.style.color='#000';">
+           {{ brand }}
+        </a>
+        {% endfor %}
+    </div>
+
+    <!-- LOOP DAS LOJAS -->
+    {% for brand, categories in stores_data.items() %}
+    <div id="{{ brand|slugify }}" style="margin-bottom: 60px; background: #fff; border: 1px solid #eee; border-radius: 4px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+
+        <!-- BANNER DA LOJA -->
+        <div style="background: #1a1a1a; color: #fff; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center;">
+            <h2 style="margin: 0; text-transform: uppercase; letter-spacing: 5px; font-size: 1rem; font-weight: 600;">{{ brand }}</h2>
+            <a href="#top" style="color: #666; font-size: 0.5rem; text-decoration: none; text-transform: uppercase;">Voltar ao Topo ↑</a>
+        </div>
+
+        <div style="padding: 25px;">
+            {% for cat, products in categories.items() %}
+            <div style="margin-bottom: 40px;">
+                <h3 style="font-size: 0.65rem; text-transform: uppercase; background: #000; color: #fff; display: inline-block; padding: 5px 12px; margin-bottom: 15px; border-radius: 2px; letter-spacing: 2px;">
+                    {{ cat }}
+                </h3>
+
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tbody>
+                        {% for p in products %}
+                        <tr style="border-bottom: 1px solid #f9f9f9;">
+                            <td style="padding: 12px; width: 60px;">
+                                <div style="width: 50px; height: 50px; border: 1px solid #eee; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+                                    <img src="{{ url_for('static', filename='images/' + p.image) }}" style="max-width: 90%; max-height: 90%; object-fit: contain;" onerror="this.src='https://placehold.co';">
+                                </div>
+                            </td>
+                            <td style="padding: 12px;">
+                                <div style="font-weight: 600; font-size: 0.85rem;">{{ p.name }}</div>
+                            </td>
+                            <td style="padding: 12px; font-weight: bold; color: #27ae60; text-align: right; width: 120px;">{{ p.price }}</td>
+                            <td style="padding: 12px; text-align: right; width: 150px;">
+                                <a href="{{ url_for('toggle_featured', product_id=p.original_index) }}" style="text-decoration: none; margin-right: 20px; font-size: 1.2rem;">{{ "⭐" if p.featured else "☆" }}</a>
+                                <a href="{{ url_for('delete_product', product_id=p.original_index) }}" style="color: #e74c3c; text-decoration: none; font-size: 0.6rem; font-weight: bold; border: 1px solid #e74c3c; padding: 6px 12px; border-radius: 2px;" onclick="return confirm('Apagar?')">Remover</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

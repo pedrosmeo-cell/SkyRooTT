@@ -1,0 +1,43 @@
+body { font-family: sans-serif; margin: 0; padding: 0; background: #fff; top: 0 !important; }
+.navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; border-bottom: 1px solid #eee; }
+.logo a { font-weight: bold; text-decoration: none; color: #000; letter-spacing: 2px; }
+.nav-links { list-style: none; display: flex; gap: 20px; }
+.nav-links a { text-decoration: none; color: #666; font-size: 14px; }
+#google_translate_element { min-width: 150px; }
+.goog-te-banner-frame.skiptranslate { display: none !important; }
+/* --- BANNER DE COOKIES MINIMALISTA --- */
+#cookie-banner {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 450px;
+    background: #000; /* Preto para combinar com o rodapé */
+    color: #fff;
+    padding: 15px 25px;
+    z-index: 10001;
+    display: none; /* Escondido por padrão */
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 2px;
+}
+
+#cookie-banner p {
+    margin: 0;
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+#cookie-banner button {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 8px 15px;
+    font-size: 0.6rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-left: 20px;
+}

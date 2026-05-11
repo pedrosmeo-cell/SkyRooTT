@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- SECÇÃO 1: MOSAICO FIXO (Visual de Impacto) -->
+<section style="max-width: 1400px; margin: 40px auto; padding: 0 40px; clear: both;">
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; height: 550px; overflow: hidden; margin-bottom: 50px;">
+
+        <!-- Foto Grande (Esquerda) -->
+        <div style="background: #f9f9f9; overflow: hidden; border: 1px solid #eee; border-radius: 2px;">
+            <img src="{{ url_for('static', filename='images/Hiscritorio1.jpg') }}"
+                 style="width: 100%; height: 100%; object-fit: cover; transition: 0.5s;"
+                 onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        </div>
+
+        <!-- Coluna Direita (2 Fotos Pequenas) -->
+        <div style="display: grid; grid-template-rows: 1fr 1fr; gap: 20px; height: 550px;">
+            <div style="background: #f9f9f9; overflow: hidden; border: 1px solid #eee; border-radius: 2px;">
+                <img src="{{ url_for('static', filename='images/Hiscritorio2.jpg') }}"
+                     style="width: 100%; height: 100%; object-fit: cover; transition: 0.5s;"
+                     onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            </div>
+            <div style="background: #f9f9f9; overflow: hidden; border: 1px solid #eee; border-radius: 2px;">
+                <img src="{{ url_for('static', filename='images/Hiscritorio3.jpg') }}"
+                     style="width: 100%; height: 100%; object-fit: cover; transition: 0.5s;"
+                     onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- LINHA DIVISÓRIA COM O TEXTO ATUALIZADO -->
+<div style="max-width: 1400px; margin: 100px auto 60px auto; padding: 0 40px; clear: both; display: block;">
+    <div style="border-top: 1px solid #000; display: flex; justify-content: center;">
+        <span style="background: #fff; padding: 0 40px; position: relative; top: -10px; text-transform: uppercase; letter-spacing: 5px; font-size: 0.65rem; font-weight: 600; color: #1a1a1a;">
+            Destaques da Semana
+        </span>
+    </div>
+</div>
+
+<!-- SECÇÃO 2: GRELHA DE PRODUTOS -->
+<section style="max-width: 1400px; margin: auto; padding: 0 40px 100px; clear: both;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 40px;">
+        {% for p in products %}
+        <div style="background: #fff; border: 1px solid #f2f2f2; padding: 20px; text-align: center; border-radius: 2px;">
+
+            <div style="height: 300px; display: flex; align-items: center; justify-content: center; background: #fdfdfd; position: relative; overflow: hidden;">
+                <img src="{{ url_for('static', filename='images/' + p.image) }}"
+                     style="max-width: 90%; max-height: 90%; object-fit: contain; transition: 0.5s;"
+                     onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"
+                     onerror="this.src='https://placehold.co';">
+
+                <span style="position: absolute; top: 10px; right: 10px; background: #000; color: #fff; padding: 5px 10px; font-size: 0.6rem; text-transform: uppercase; font-weight: bold;">
+                    {{ p.affiliate }}
+                </span>
+            </div>
+
+            <div style="padding-top: 20px;">
+                <h3 style="font-size: 0.8rem; text-transform: uppercase; margin: 0; min-height: 40px; letter-spacing: 1px; color: #1a1a1a;">{{ p.name }}</h3>
+                <p style="font-weight: 700; color: #27ae60; font-size: 1.3rem; margin: 10px 0;">{{ p.price }}</p>
+                <a href="{{ p.link }}" target="_blank" style="display: inline-block; background: #1a1a1a; color: #fff; text-decoration: none; font-size: 0.65rem; padding: 12px 30px; letter-spacing: 2px; text-transform: uppercase; border-radius: 2px;">
+                    Adquirir Asset →
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

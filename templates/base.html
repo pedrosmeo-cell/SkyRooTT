@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyRoot | Executive Office Solutions</title>
+    <style>
+        /* --- ESTILOS ORIGINAIS QUE JÁ TINHAS --- */
+        body { margin: 0; font-family: 'Inter', sans-serif; background-color: #ffffff; display: flex; flex-direction: column; min-height: 100vh; }
+        main { flex: 1; }
+
+        header { background: #fff; border-bottom: 1px solid #000; position: sticky; top: 0; z-index: 9999; height: 80px; display: flex; align-items: center; }
+        nav { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; width: 100%; margin: auto; padding: 0 40px; }
+        .logo a { font-size: 1.1rem; letter-spacing: 5px; text-transform: uppercase; font-weight: bold; color: #000; text-decoration: none; }
+
+        .nav-links { display: flex; gap: 5px; list-style: none; margin: 0; padding: 0; flex-grow: 1; justify-content: center; }
+        .nav-links li { position: relative; }
+        .nav-links li a { text-transform: uppercase; font-size: 0.6rem; letter-spacing: 1.5px; color: #000; text-decoration: none; padding: 10px 12px; display: inline-block; transition: 0.3s; }
+
+        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background: #fff; min-width: 160px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid #eee; padding: 10px 0; }
+        .dropdown-content a { color: #000 !important; padding: 10px 20px !important; font-size: 0.55rem !important; display: block !important; text-transform: uppercase !important; letter-spacing: 1px !important; text-decoration: none; }
+        .nav-links li:hover .dropdown-content { display: block; }
+        .dropdown-content a:hover { background: #f9f9f9; }
+
+        .nav-right { display: flex; align-items: center; gap: 15px; }
+        .admin-link { color: #e74c3c !important; font-weight: 800 !important; border: 1px solid #e74c3c; padding: 8px 15px !important; border-radius: 2px; text-decoration: none; font-size: 0.6rem; letter-spacing: 1px; }
+        #local-weather { font-size: 0.8rem; font-weight: 800; color: #000; border-left: 1px solid #000; padding-left: 20px; }
+
+        footer { padding: 100px 0; border-top: 1px solid #000; text-align: center; background: #fff; margin-top: 50px; }
+        .footer-links { display: flex; justify-content: center; gap: 40px; margin-bottom: 25px; }
+        .footer-links a { text-transform: uppercase; font-size: 0.5rem; letter-spacing: 2px; color: #000; text-decoration: none; font-weight: 600; }
+        .copyright { font-size: 0.5rem; letter-spacing: 4px; color: #000; text-transform: uppercase; margin: 0; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo"><a href="/">SKYROOT</a></div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                {% for store in ['Amazon', 'Worten', 'Shopee', 'AliExpress', 'eBay'] %}
+                <li>
+                    <a href="/produtos/{{ store|lower }}">{{ store }}</a>
+                    <div class="dropdown-content">
+                        <a href="/produtos/{{ store|lower }}?cat=Mesa">Mesas</a>
+                        <a href="/produtos/{{ store|lower }}?cat=Cadeira">Cadeiras</a>
+                        <a href="/produtos/{{ store|lower }}?cat=Iluminação">Iluminação</a>
+                        <a href="/produtos/{{ store|lower }}?cat=Acessórios">Acessórios</a>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="nav-right">
+                {% if session.get('logged_in') %}
+                    <a href="/dashboard" class="admin-link">DASHBOARD</a>
+                    <a href="/logout" style="text-decoration: none; color: #000; font-size: 0.5rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; margin-left: 5px;">SAIR</a>
+                {% endif %}
+                <div id="local-weather">18°C</div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/termos">Termos</a>
+            <a href="/privacidade">Privacidade</a>
+            <a href="/parceiros">Parceiros</a>
+            <a href="/guia">Guia</a>
+            <a href="/litigios">Litígios</a>
+        </div>
+        <p class="copyright">&copy; 2024 SKYROOT GLOBAL ASSETS</p>
+    </footer>
+
+    <!-- SISTEMA DE COOKIES SKYROOT V3 (ESTE É O NOVO CÓDIGO) -->
+    <div id="cookie-v3" style="display:none; position:fixed; bottom:20px; left:50%; transform:translateX(-50%); width:90%; max-width:550px; background:#fff; border:1px solid #000; padding:25px; z-index:10001; box-shadow:0 15px 50px rgba(0,0,0,0.3); font-family: 'Inter', sans-serif;">
+        <div style="text-align:right; margin-bottom:15px;">
+            <a href="javascript:void(0)" onclick="fecharV3()" style="font-size:0.6rem; color:#999; text-decoration:none; text-transform:uppercase; font-weight:bold; letter-spacing: 1px;">Continuar sem aceitar →</a>
+        </div>
+        <h4 style="margin:0 0 10px 0; font-size:0.8rem; text-transform:uppercase; letter-spacing:2px; font-weight:800; color:#000;">Política de Cookies</h4>
+        <p style="font-size:0.65rem; line-height:1.6; color:#444; margin-bottom:20px;">
+            Este site utiliza cookies para garantir a melhor experiência. Ao clicar em "Aceitar Tudo", autoriza o uso de cookies de marketing para os nossos parceiros.
+        </p>
+        <div style="display:flex; gap:10px;">
+            <button onclick="alert('Definições detalhadas em breve.')" style="flex:1; background:#fff; color:#000; border:1px solid #000; padding:12px; font-size:0.6rem; font-weight:bold; cursor:pointer; text-transform:uppercase; letter-spacing: 1px;">Gerir</button>
+            <button onclick="aceitarV3()" style="flex:1; background:#000; color:#fff; border:none; padding:12px; font-size:0.6rem; font-weight:bold; cursor:pointer; text-transform:uppercase; letter-spacing: 1px;">Aceitar Tudo</button>
+        </div>
+    </div>
+
+    <script>
+        // O banner aparece apenas se não houver decisão guardada na chave 'skyroot_v3'
+        window.addEventListener('DOMContentLoaded', function() {
+            if (!localStorage.getItem('skyroot_v3')) {
+                document.getElementById('cookie-v3').style.display = 'block';
+            }
+        });
+
+        function aceitarV3() {
+            localStorage.setItem('skyroot_v3', 'aceite');
+            document.getElementById('cookie-v3').style.display = 'none';
+        }
+
+        function fecharV3() {
+            localStorage.setItem('skyroot_v3', 'recusado');
+            document.getElementById('cookie-v3').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
