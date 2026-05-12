@@ -1,11 +1,15 @@
-body { font-family: sans-serif; margin: 0; padding: 0; background: #fff; top: 0 !important; }
+body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background: #fff; top: 0 !important; }
+
+/* NAVBAR */
 .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; border-bottom: 1px solid #eee; }
 .logo a { font-weight: bold; text-decoration: none; color: #000; letter-spacing: 2px; }
 .nav-links { list-style: none; display: flex; gap: 20px; }
 .nav-links a { text-decoration: none; color: #666; font-size: 14px; }
+
 #google_translate_element { min-width: 150px; }
 .goog-te-banner-frame.skiptranslate { display: none !important; }
-/* --- BANNER DE COOKIES MINIMALISTA --- */
+
+/* --- BANNER DE COOKIES --- */
 #cookie-banner {
     position: fixed;
     bottom: 20px;
@@ -13,31 +17,60 @@ body { font-family: sans-serif; margin: 0; padding: 0; background: #fff; top: 0 
     transform: translateX(-50%);
     width: 90%;
     max-width: 450px;
-    background: #000; /* Preto para combinar com o rodapé */
+    background: #000;
     color: #fff;
     padding: 15px 25px;
     z-index: 10001;
-    display: none; /* Escondido por padrão */
+    display: none;
     align-items: center;
     justify-content: space-between;
     border-radius: 2px;
 }
 
-#cookie-banner p {
-    margin: 0;
-    font-size: 0.6rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
+#cookie-banner p { margin: 0; font-size: 0.6rem; letter-spacing: 1px; text-transform: uppercase; }
+#cookie-banner button { background: #fff; color: #000; border: none; padding: 8px 15px; font-size: 0.6rem; font-weight: bold; cursor: pointer; text-transform: uppercase; margin-left: 20px; }
 
-#cookie-banner button {
-    background: #fff;
-    color: #000;
-    border: none;
-    padding: 8px 15px;
-    font-size: 0.6rem;
-    font-weight: bold;
-    cursor: pointer;
-    text-transform: uppercase;
-    margin-left: 20px;
+/* --- AJUSTES PARA TELEMÓVEL (MOBILE) --- */
+@media (max-width: 768px) {
+    /* Centraliza o conteúdo geral */
+    section { padding: 0 20px !important; text-align: center; }
+
+    /* Ajusta as grelhas de produtos para ficarem em 1 coluna centralizada */
+    div[style*="display: grid"] {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+    }
+
+    /* Desmonta o Mosaico da Home para as fotos ficarem uma por cima da outra */
+    div[style*="height: 550px"] {
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    div[style*="height: 550px"] div {
+        height: 300px !important;
+        width: 100% !important;
+        margin-bottom: 15px;
+    }
+
+    /* Centraliza o Logótipo e o Menu no telemóvel */
+    header nav {
+        flex-direction: column !important;
+        height: auto !important;
+        padding: 20px !important;
+    }
+
+    .nav-links {
+        justify-content: center !important;
+        padding: 0 !important;
+        margin-top: 15px !important;
+        flex-wrap: wrap !important;
+    }
+
+    /* Garante que as imagens dos produtos não transbordam */
+    .card img, .product-img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
 }
