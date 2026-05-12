@@ -86,7 +86,7 @@ def dashboard():
     all_products = data.get('products', [])
     stores_data = {}
     for index, p in enumerate(all_products):
-        brand = p.get('affiliate') or 'Outros';
+        brand = p.get('affiliate') or 'Outros'
         cat = p.get('category') or 'Geral'
         if brand not in stores_data: stores_data[brand] = {}
         if cat not in stores_data[brand]: stores_data[brand][cat] = []
@@ -95,12 +95,38 @@ def dashboard():
     return render_template('dashboard.html', stores_data=stores_data)
 
 
+# --- NOVA ROTA DE EDIÇÃO (ADICIONADA AQUI) ---
+@app.route('/edit/<int:product_id>', methods=['GET', 'POST'])
+def edit_product(product_id):
+    if not session.get('logged_in'): return redirect(url_for('admin'))
+
+    data = load_data()
+    if product_id < 0 or product_id >= len(data['products']):
+        return redirect(url_for('dashboard'))
+
+    if request.method == 'POST':
+        data['products'][product_id] = {
+            "affiliate": request.form.get('affiliate'),
+            "name": request.form.get('name'),
+            "price": request.form.get('price'),
+            "category": request.form.get('category'),
+            "image": request.form.get('image_url'),
+            "link": request.form.get('link'),
+            "featured": True if request.form.get('featured') == 'yes' else False
+        }
+        save_data(data)
+        return redirect(url_for('dashboard'))
+
+    product = data['products'][product_id]
+    return render_template('edit.html', p=product, product_id=product_id)
+
+
 @app.route('/delete/<int:product_id>')
 def delete_product(product_id):
     if not session.get('logged_in'): return redirect(url_for('admin'))
     data = load_data()
     if 0 <= product_id < len(data['products']):
-        data['products'].pop(product_id);
+        data['products'].pop(product_id)
         save_data(data)
     return redirect(url_for('dashboard'))
 

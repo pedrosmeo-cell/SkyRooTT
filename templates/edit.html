@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="max-width: 900px; margin: 50px auto; padding: 0 20px; font-family: 'Inter', sans-serif;">
+    <h1 style="text-transform: uppercase; letter-spacing: 3px; font-size: 1.2rem; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 30px;">Editar Ativo</h1>
+
+    <div style="background: #fff; padding: 30px; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 50px;">
+        <form action="/edit/{{ product_id }}" method="POST">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <!-- LOJA -->
+                <div>
+                    <label style="display:block; font-size:0.7rem; font-weight:bold; margin-bottom:8px;">LOJA:</label>
+                    <select name="affiliate" style="width:100%; padding:12px; border: 2px solid #ccc; border-radius: 4px;">
+                        {% for store in ['Amazon', 'Worten', 'Shopee', 'AliExpress', 'eBay'] %}
+                        <option value="{{ store }}" {% if p.affiliate == store %}selected{% endif %}>{{ store }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- NOME -->
+                <div>
+                    <label style="display:block; font-size:0.7rem; font-weight:bold; margin-bottom:8px;">NOME DO PRODUTO:</label>
+                    <input type="text" name="name" value="{{ p.name }}" required style="width:100%; padding:12px; border: 2px solid #ccc; border-radius: 4px;">
+                </div>
+
+                <!-- PREÇO -->
+                <div>
+                    <label style="display:block; font-size:0.7rem; font-weight:bold; margin-bottom:8px;">PREÇO:</label>
+                    <input type="text" name="price" value="{{ p.price }}" placeholder="0.00€" style="width:100%; padding:12px; border: 2px solid #ccc; border-radius: 4px;">
+                </div>
+
+                <!-- CATEGORIA -->
+                <div>
+                    <label style="display:block; font-size:0.7rem; font-weight:bold; margin-bottom:8px;">CATEGORIA:</label>
+                    <select name="category" style="width:100%; padding:12px; border: 2px solid #ccc; border-radius: 4px;">
+                        {% for cat in ['Mesa', 'Cadeira', 'Iluminação', 'Acessórios'] %}
+                        <option value="{{ cat }}" {% if p.category == cat %}selected{% endif %}>{{ cat }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- IMAGEM -->
+                <div>
+                    <label style="display:block; font-size:0.7rem; font-weight:bold; margin-bottom:8px;">FICHEIRO DA FOTO (Ex: mesa1.jpg):</label>
+                    <input type="text" name="image_url" value="{{ p.image }}" required style="width:100%; padding:12px; border: 2px solid #ccc; border-radius: 4px;">
+                </div>
+
+                <!-- LINK -->
+                <div>
+                    <label style="display:block; font-size:0.7rem; font-weight:bold; margin-bottom:8px;">LINK DE AFILIADO:</label>
+                    <input type="text" name="link" value="{{ p.link }}" required style="width:100%; padding:12px; border: 2px solid #ccc; border-radius: 4px;">
+                </div>
+
+                <!-- DESTAQUE -->
+                <div style="grid-column: span 2; display: flex; align-items: center; gap: 10px; margin-top: 10px; background: #f9f9f9; padding: 15px; border-radius: 4px; border: 1px dashed #ccc;">
+                    <input type="checkbox" name="featured" id="featured" value="yes" {% if p.featured %}checked{% endif %} style="width: 20px; height: 20px; cursor: pointer;">
+                    <label for="featured" style="font-size: 0.75rem; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; color: #1a1a1a;">
+                        ⭐ DESTACAR ESTE PRODUTO NA HOME
+                    </label>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-top: 30px;">
+                <a href="/dashboard" style="flex: 1; text-align: center; background: #eee; color: #000; padding: 15px; text-decoration: none; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; border-radius: 2px;">Cancelar</a>
+                <button type="submit" style="flex: 2; background: #000; color: #fff; padding: 15px; border: none; cursor: pointer; font-weight: bold; text-transform: uppercase; letter-spacing: 2px;">Atualizar Ativo</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

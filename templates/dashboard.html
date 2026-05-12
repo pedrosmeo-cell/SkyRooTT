@@ -8,7 +8,7 @@
         <a href="/admin" style="background: #000; color: #fff; padding: 12px 25px; text-decoration: none; font-weight: bold; font-size: 0.75rem; border-radius: 2px; letter-spacing: 1px;">+ NOVO PRODUTO</a>
     </div>
 
-    <!-- BARRA DE SELEÇÃO DE MARCAS (O QUE PEDISTE) -->
+    <!-- BARRA DE SELEÇÃO DE MARCAS -->
     <div style="margin-bottom: 40px; display: flex; gap: 10px; overflow-x: auto; padding-bottom: 15px; border-bottom: 1px solid #f2f2f2;">
         <span style="font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; align-self: center; margin-right: 10px; color: #bbb;">Filtrar:</span>
 
@@ -51,8 +51,13 @@
                                 <div style="font-weight: 600; font-size: 0.85rem;">{{ p.name }}</div>
                             </td>
                             <td style="padding: 12px; font-weight: bold; color: #27ae60; text-align: right; width: 120px;">{{ p.price }}</td>
-                            <td style="padding: 12px; text-align: right; width: 150px;">
+
+                            <!-- COLUNA DE AÇÕES ATUALIZADA -->
+                            <td style="padding: 12px; text-align: right; width: 220px;">
                                 <a href="{{ url_for('toggle_featured', product_id=p.original_index) }}" style="text-decoration: none; margin-right: 20px; font-size: 1.2rem;">{{ "⭐" if p.featured else "☆" }}</a>
+
+                                <a href="/edit/{{ p.original_index }}" style="color: #3498db; text-decoration: none; font-size: 0.6rem; font-weight: bold; border: 1px solid #3498db; padding: 6px 12px; border-radius: 2px; margin-right: 5px;">Editar</a>
+
                                 <a href="{{ url_for('delete_product', product_id=p.original_index) }}" style="color: #e74c3c; text-decoration: none; font-size: 0.6rem; font-weight: bold; border: 1px solid #e74c3c; padding: 6px 12px; border-radius: 2px;" onclick="return confirm('Apagar?')">Remover</a>
                             </td>
                         </tr>
