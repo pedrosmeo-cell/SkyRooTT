@@ -52,7 +52,7 @@
             "category": "Mesa",
             "image": "AMAZON/amazon_Coleshome Secretária Gaming com LED1.jpg",
             "link": "https://amzn.to/49FiIXg",
-            "featured": true
+            "featured": false
         },
         {
             "affiliate": "Amazon",
@@ -70,7 +70,7 @@
             "category": "Mesa",
             "image": "AMAZON/amazon_ODK Mesa de canto com gavetas, 135 × 100.jpg",
             "link": "https://amzn.to/4wkParM",
-            "featured": true
+            "featured": false
         },
         {
             "affiliate": "Amazon",
@@ -97,7 +97,7 @@
             "category": "Cadeira",
             "image": "AMAZON/amazon_Cadeira de secretária ergonómica.jpg",
             "link": "https://amzn.to/3PgFjm1",
-            "featured": true
+            "featured": false
         },
         {
             "affiliate": "Amazon",
@@ -106,52 +106,7 @@
             "category": "Cadeira",
             "image": "AMAZON/amazon_MELOKEA Cadeira de escritório ergonómica.jpg",
             "link": "https://amzn.to/4uyNAkf",
-            "featured": true
-        },
-        {
-            "affiliate": "Amazon",
-            "name": "SKYLEO Lâmpada LED de Mesa",
-            "price": "48,78€",
-            "category": "Iluminação",
-            "image": "AMAZON/amazon_SKYLEO Lâmpada LED de Mesa.jpg",
-            "link": "https://amzn.to/3QYZfdL",
-            "featured": true
-        },
-        {
-            "affiliate": "Amazon",
-            "name": "Jeebel Candeeiro de secretária sem fios, 5000",
-            "price": "42,68€",
-            "category": "Iluminação",
-            "image": "AMAZON/amazon_Jeebel Candeeiro de secretária sem fios, 5000.jpg",
-            "link": "https://amzn.to/3OU2fYp",
-            "featured": true
-        },
-        {
-            "affiliate": "Amazon",
-            "name": "SLATOR Candeeiro de mesa LED, flexível",
-            "price": "Oferta por tempo limitado 26,97€",
-            "category": "Iluminação",
-            "image": "AMAZON/amazon_SLATOR Candeeiro de mesa LED, flexível_1.jpg",
-            "link": "https://amzn.to/4u5poq2",
-            "featured": true
-        },
-        {
-            "affiliate": "Amazon",
-            "name": "IBUYKE Prateleira organizadora de secretária",
-            "price": "-18% 32,57€",
-            "category": "Acessórios",
-            "image": "AMAZON/amazon_IBUYKE Prateleira organizadora de secretária_1.jpg",
-            "link": "https://amzn.to/4fcCEUY",
-            "featured": true
-        },
-        {
-            "affiliate": "Amazon",
-            "name": "Tomada de mesa com USB C",
-            "price": "Oferta por tempo limitado 32,26€",
-            "category": "Acessórios",
-            "image": "AMAZON/amazon_Tomada de mesa com USB C.jpg",
-            "link": "https://amzn.to/4dkKPw7",
-            "featured": true
+            "featured": false
         },
         {
             "affiliate": "AliExpress",
@@ -160,7 +115,7 @@
             "category": "Mesa",
             "image": "ALIEXPRESS/Mesa de jogos Coleshome 120x120 cm.jpg",
             "link": "https://s.click.aliexpress.com/e/_c32MJXfh",
-            "featured": true
+            "featured": false
         },
         {
             "affiliate": "AliExpress",
@@ -169,7 +124,7 @@
             "category": "Cadeira",
             "image": "ALIEXPRESS/Cadeira de escritório, cadeira de computador.jpg",
             "link": "https://s.click.aliexpress.com/e/_c3SrjooR",
-            "featured": true
+            "featured": false
         },
         {
             "affiliate": "AliExpress",
@@ -178,16 +133,88 @@
             "category": "Cadeira",
             "image": "ALIEXPRESS/Cadeira Ergonômica de Couro PU para Jogos.jpg",
             "link": "https://s.click.aliexpress.com/e/_c3aGI5yF",
-            "featured": true
+            "featured": false
         },
         {
             "affiliate": "AliExpress",
-            "name": "Luminária de mesa LED ultrabrilhante e confortável ",
-            "price": "40,03€ Economize 75,13€  -115,16€",
-            "category": "Iluminação",
-            "image": "ALIEXPRESS/AliExpress_Luminária de mesa LED_1.jpg",
-            "link": "https://s.click.aliexpress.com/e/_c4Vi7oYf",
-            "featured": true
+            "name": "Cadeira de escritório ajustável com encosto alto",
+            "price": "171,94€ Economize -655,09€ 827,03€",
+            "category": "Cadeira",
+            "image": "ALIEXPRESS/1005011880279197.jpg",
+            "link": "https://s.click.aliexpress.com/e/_c3mE1lY3",
+            "featured": false
+        },
+        {
+            "affiliate": "AliExpress",
+            "name": "Cadeira de escritório executiva ergonômica com encosto alto",
+            "price": "191,23€ 73% de desconto 708,25€",
+            "category": "Cadeira",
+            "image": "ALIEXPRESS/1005010787602140.jpg",
+            "link": "https://s.click.aliexpress.com/e/_c30OWFl9",
+            "featured": false
+        },
+        {
+            "affiliate": "AliExpress",
+            "name": "Cadeira de escritório ergonômica, cadeira gamer em tela ",
+            "price": "152,89€ 57% de desconto 357,99€",
+            "category": "Cadeira",
+            "image": "ALIEXPRESS/1005011959214109.jpg",
+            "link": "https://s.click.aliexpress.com/e/_c4rI0GoR",
+            "featured": false
+        },
+        {
+            "affiliate": "AliExpress",
+            "name": "Mesa de escritório elétrica com altura ajustável",
+            "price": "144,15€ Economize -147,63€ 291,78€",
+            "category": "Mesa",
+            "image": "ALIEXPRESS/1005012084373829.jpg",
+            "link": "https://s.click.aliexpress.com/e/_c41D3OFd",
+            "featured": false
+        },
+        {
+            "affiliate": "AliExpress",
+            "name": "Mesa de escritório de 100/120 cm",
+            "price": "70,87€ Economize -102,03€ 172,90€",
+            "category": "Mesa",
+            "image": "ALIEXPRESS/1005012003324765.jpg",
+            "link": "https://s.click.aliexpress.com/e/_c3Xyb3KR",
+            "featured": false
+        },
+        {
+            "affiliate": "AliExpress",
+            "name": "Mesa de jogos em formato de L",
+            "price": "111,72€ Economize -115,21€ 226,93€",
+            "category": "Mesa",
+            "image": "ALIEXPRESS/1005011984420550.jpg",
+            "link": "https://s.click.aliexpress.com/e/_c4KC9eZ1",
+            "featured": false
+        },
+        {
+            "affiliate": "AliExpress",
+            "name": "Mesa de computador com 8 gavetas de armazenamento",
+            "price": "116,26€ Novos clientes economizam -110,67€ 226,93€",
+            "category": "Mesa",
+            "image": "ALIEXPRESS/1005011946391020.jpg",
+            "link": "https://s.click.aliexpress.com/e/_c3LjYDgF",
+            "featured": false
+        },
+        {
+            "affiliate": "Amazon",
+            "name": "EMIAH Cadeira de escritório ergonómica",
+            "price": "161,62€",
+            "category": "Cadeira",
+            "image": "AMAZON/B0F1XR5XD9.jpg",
+            "link": "https://amzn.to/4wpDILn",
+            "featured": false
+        },
+        {
+            "affiliate": "Amazon",
+            "name": "HOLLUDLE Cadeira de escritório ergonómica",
+            "price": "213,47€ ",
+            "category": "Cadeira",
+            "image": "AMAZON//B0BLMCLK15.jpg",
+            "link": "https://amzn.to/42uyhNG",
+            "featured": false
         }
     ]
 }
