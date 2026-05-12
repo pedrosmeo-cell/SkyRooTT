@@ -37,43 +37,68 @@
     </div>
 </div>
 
+<!-- NOVO: BLOCO DE PARCEIROS ESTRATÉGICOS (COM OS TEUS LINKS DE AFILIADO) -->
+<div style="max-width: 1400px; margin: 40px auto 70px; text-align: center; padding: 0 40px;">
+    <p style="font-size: 0.55rem; text-transform: uppercase; letter-spacing: 4px; color: #bbb; margin-bottom: 30px; font-weight: 500;">
+        Direct Access to Global Marketplace Partners
+    </p>
+
+    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; align-items: center;">
+
+        {% set parceiros = [
+            {'name': 'Amazon Global', 'url': 'https://amzn.to'},
+            {'name': 'Worten Solutions', 'url': 'https://www.worten.pt'},
+            {'name': 'Shopee Official', 'url': 'https://shopee.com.br'},
+            {'name': 'AliExpress Business', 'url': 'https://aliexpress.com'},
+            {'name': 'eBay Executive', 'url': 'https://www.ebay.com'}
+        ] %}
+
+        {% for loja in parceiros %}
+        <a href="{{ loja.url }}"
+           target="_blank"
+           rel="nofollow noopener noreferrer"
+           style="text-decoration: none; color: #000; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; padding: 12px 25px; border: 1px solid #000; transition: 0.3s; background: #fff; min-width: 200px; box-sizing: border-box;"
+           onmouseover="this.style.background='#000'; this.style.color='#fff';"
+           onmouseout="this.style.background='#fff'; this.style.color='#000';">
+            {{ loja.name }} ↗
+        </a>
+        {% endfor %}
+
+    </div>
+
+    <div style="width: 1px; height: 50px; background: linear-gradient(to bottom, #000, transparent); margin: 40px auto 0; opacity: 0.15;"></div>
+</div>
+
 <!-- SECÇÃO 2: DESTAQUES ORGANIZADOS POR MARCA -->
 <section style="max-width: 1400px; margin: auto; padding: 0 40px 100px; clear: both;">
 
-    {# Criamos uma lista única de marcas presentes nos destaques #}
     {% set stores = products|map(attribute='affiliate')|unique|list %}
 
     {% for store in stores %}
-        <!-- TÍTULO DA MARCA -->
-        <h2 style="text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; margin: 60px 0 30px; border-left: 3px solid #000; padding-left: 15px; font-weight: 800;">
-            Destaques {{ store }}
-        </h2>
+        <div style="display: flex; align-items: center; margin: 80px 0 40px 0; width: 100%;">
+            <h2 style="text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; font-weight: 800; margin: 0; padding-right: 20px; white-space: nowrap;">
+                | DESTAQUES {{ store }}
+            </h2>
+            <div style="flex-grow: 1; border-top: 1px solid #000;"></div>
+        </div>
 
-        <!-- GRELHA DE PRODUTOS DA MARCA ESPECÍFICA -->
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 40px; margin-bottom: 80px;">
             {% for p in products if p.affiliate == store %}
-            <div style="background: #fff; border: 1px solid #f2f2f2; padding: 20px; text-align: center; border-radius: 2px; transition: 0.3s;">
-
+            <div style="background: #fff; border: 1px solid #f2f2f2; padding: 20px; text-align: center; border-radius: 2px;">
                 <div style="height: 300px; display: flex; align-items: center; justify-content: center; background: #fdfdfd; position: relative; overflow: hidden;">
                     <img src="{{ url_for('static', filename='images/' + p.image) }}"
                          style="max-width: 90%; max-height: 90%; object-fit: contain; transition: 0.5s;"
                          onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"
                          onerror="this.src='https://placehold.co';">
-
                     <span style="position: absolute; top: 10px; right: 10px; background: #000; color: #fff; padding: 5px 10px; font-size: 0.6rem; text-transform: uppercase; font-weight: bold; letter-spacing: 1px;">
                         {{ p.affiliate }}
                     </span>
                 </div>
 
                 <div style="padding-top: 25px;">
-                    <h3 style="font-size: 0.8rem; text-transform: uppercase; margin: 0; min-height: 40px; letter-spacing: 1px; color: #1a1a1a; line-height: 1.4;">
-                        {{ p.name }}
-                    </h3>
-                    <p style="font-weight: 700; color: #27ae60; font-size: 1.3rem; margin: 15px 0;">
-                        {{ p.price }}
-                    </p>
-                    <a href="{{ p.link }}" target="_blank" style="display: inline-block; background: #1a1a1a; color: #fff; text-decoration: none; font-size: 0.65rem; padding: 12px 35px; letter-spacing: 2px; text-transform: uppercase; border-radius: 2px; transition: 0.3s;"
-                       onmouseover="this.style.background='#333'" onmouseout="this.style.background='#1a1a1a'">
+                    <h3 style="font-size: 0.8rem; text-transform: uppercase; margin: 0; min-height: 40px; letter-spacing: 1px; color: #1a1a1a;">{{ p.name }}</h3>
+                    <p style="font-weight: 700; color: #27ae60; font-size: 1.3rem; margin: 15px 0;">{{ p.price }}</p>
+                    <a href="{{ p.link }}" target="_blank" rel="nofollow noopener noreferrer" style="display: inline-block; background: #1a1a1a; color: #fff; text-decoration: none; font-size: 0.65rem; padding: 12px 35px; letter-spacing: 2px; text-transform: uppercase; border-radius: 2px;">
                         Adquirir Asset →
                     </a>
                 </div>
@@ -81,12 +106,6 @@
             {% endfor %}
         </div>
     {% endfor %}
-
-    {% if not products %}
-        <div style="text-align: center; padding: 100px 0; color: #bbb; text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem;">
-            Nenhum ativo em destaque no momento.
-        </div>
-    {% endif %}
 </section>
 
 {% endblock %}

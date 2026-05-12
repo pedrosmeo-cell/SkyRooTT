@@ -1,94 +1,101 @@
 {
     "products": [
         {
+            "affiliate": "Amazon",
             "name": "VASAGLE Secretária, mesa de computador",
             "price": "74,29€ ",
-            "affiliate": "Amazon",
             "category": "Mesa",
-            "image": "amazon_vasagel_lLWD104B01.jpg",
+            "image": "AMAZON/amazon_vasagel_lLWD104B01.jpg",
             "link": "https://amzn.to/49G23CX",
             "featured": false
         },
         {
+            "affiliate": "Amazon",
             "name": "ErGear Secretária elétrica elevável",
             "price": "164,16€",
-            "affiliate": "Amazon",
             "category": "Mesa",
-            "image": "amazon_ErGear_ Mesa_elevavel.jpg",
-            "link": "https://amzn.to/3PdOALB"
+            "image": "AMAZON/amazon_ErGear_ Mesa_elevavel.jpg",
+            "link": "https://amzn.to/3PdOALB",
+            "featured": false
         },
         {
+            "affiliate": "Amazon",
             "name": "ErGear Secretária elétrica",
             "price": "-13% 132,14€",
-            "affiliate": "Amazon",
             "category": "Mesa",
-            "image": "amazon_ErGear_elétrica_ajustavel.jpg",
-            "link": "https://amzn.to/3PdP2JN"
+            "image": "AMAZON/amazon_ErGear_elétrica_ajustavel.jpg",
+            "link": "https://amzn.to/3PdP2JN",
+            "featured": false
         },
         {
+            "affiliate": "Amazon",
             "name": "Coleshome Secretária com gavetas de tecido",
             "price": "-11% 81,32€",
-            "affiliate": "Amazon",
             "category": "Mesa",
-            "image": "amazon_Coleshome_ Secretária.jpg",
-            "link": "https://amzn.to/4tnERAA"
+            "image": "AMAZON/amazon_Coleshome_ Secretária.jpg",
+            "link": "https://amzn.to/4tnERAA",
+            "featured": false
         },
         {
+            "affiliate": "Amazon",
             "name": "Coleshome Mesa de jogos com LED",
             "price": "101,09€",
-            "affiliate": "Amazon",
             "category": "Mesa",
-            "image": "amazon_Coleshome Mesa de jogos com LED.jpg",
-            "link": "https://amzn.to/4u92K04"
+            "image": "AMAZON/amazon_Coleshome Mesa de jogos com LED.jpg",
+            "link": "https://amzn.to/4u92K04",
+            "featured": false
         },
         {
+            "affiliate": "Amazon",
             "name": "Coleshome Secretária Gaming com LED",
             "price": "-10% 96,56€",
-            "affiliate": "Amazon",
             "category": "Mesa",
-            "image": "amazon_Coleshome Secretária Gaming com LED1.jpg",
+            "image": "AMAZON/amazon_Coleshome Secretária Gaming com LED1.jpg",
             "link": "https://amzn.to/49FiIXg",
             "featured": true
         },
         {
+            "affiliate": "Amazon",
             "name": "SONGMICS SONGMICSESecre",
             "price": "142,30€",
-            "affiliate": "Amazon",
             "category": "Mesa",
-            "image": "amazon_SONGMICS SONGMICSESecre.jpg",
-            "link": "https://amzn.to/3OWeoMp"
+            "image": "AMAZON/amazon_SONGMICS SONGMICSESecre.jpg",
+            "link": "https://amzn.to/3OWeoMp",
+            "featured": false
         },
         {
+            "affiliate": "Amazon",
             "name": "amazon_ODK Mesa de canto com gavetas, 135 × 100",
             "price": "121,98€",
-            "affiliate": "Amazon",
             "category": "Mesa",
-            "image": "amazon_ODK Mesa de canto com gavetas, 135 × 100.jpg",
-            "link": "https://amzn.to/4wkParM"
-        },
-        {
-            "name": "Coleshome Mesa de jogos com prateleiras",
-            "price": "-9% 129,09€",
-            "affiliate": "Amazon",
-            "category": "Mesa",
-            "image": "amazon_Coleshome Mesa de jogos com prateleiras.jpg",
-            "link": "https://amzn.to/4ukawnX"
-        },
-        {
-            "name": "LVB Secretária de madeira rústica",
-            "price": "172,80€",
-            "affiliate": "Amazon",
-            "category": "Mesa",
-            "image": "amazon_LVB Secretária de madeira rústica.jpg",
-            "link": "https://amzn.to/4wlCZLa",
+            "image": "AMAZON/amazon_ODK Mesa de canto com gavetas, 135 × 100.jpg",
+            "link": "https://amzn.to/4wkParM",
             "featured": true
         },
         {
+            "affiliate": "Amazon",
+            "name": "Coleshome Mesa de jogos com prateleiras",
+            "price": "-9% 129,09€",
+            "category": "Mesa",
+            "image": "AMAZON/amazon_Coleshome Mesa de jogos com prateleiras.jpg",
+            "link": "https://amzn.to/4ukawnX",
+            "featured": false
+        },
+        {
+            "affiliate": "Amazon",
+            "name": "LVB Secretária de madeira rústica",
+            "price": "172,80€",
+            "category": "Mesa",
+            "image": "AMAZON/amazon_LVB Secretária de madeira rústica.jpg",
+            "link": "https://amzn.to/4wlCZLa",
+            "featured": false
+        },
+        {
+            "affiliate": "Amazon",
             "name": "Cadeira de secretária ergonómica",
             "price": "91,48€",
-            "affiliate": "Amazon",
             "category": "Cadeira",
-            "image": "amazon_Cadeira de secretária ergonómica.jpg",
+            "image": "AMAZON/amazon_Cadeira de secretária ergonómica.jpg",
             "link": "https://amzn.to/3PgFjm1",
             "featured": true
         },
@@ -97,7 +104,7 @@
             "name": "MELOKEA Cadeira de escritório ergonómica",
             "price": "177,88€ ",
             "category": "Cadeira",
-            "image": "amazon_MELOKEA Cadeira de escritório ergonómica.jpg",
+            "image": "AMAZON/amazon_MELOKEA Cadeira de escritório ergonómica.jpg",
             "link": "https://amzn.to/4uyNAkf",
             "featured": true
         },
@@ -106,7 +113,7 @@
             "name": "SKYLEO Lâmpada LED de Mesa",
             "price": "48,78€",
             "category": "Iluminação",
-            "image": "amazon_SKYLEO Lâmpada LED de Mesa.jpg",
+            "image": "AMAZON/amazon_SKYLEO Lâmpada LED de Mesa.jpg",
             "link": "https://amzn.to/3QYZfdL",
             "featured": true
         },
@@ -115,7 +122,7 @@
             "name": "Jeebel Candeeiro de secretária sem fios, 5000",
             "price": "42,68€",
             "category": "Iluminação",
-            "image": "amazon_Jeebel Candeeiro de secretária sem fios, 5000.jpg",
+            "image": "AMAZON/amazon_Jeebel Candeeiro de secretária sem fios, 5000.jpg",
             "link": "https://amzn.to/3OU2fYp",
             "featured": true
         },
@@ -124,7 +131,7 @@
             "name": "SLATOR Candeeiro de mesa LED, flexível",
             "price": "Oferta por tempo limitado 26,97€",
             "category": "Iluminação",
-            "image": "amazon_SLATOR Candeeiro de mesa LED, flexível_1.jpg",
+            "image": "AMAZON/amazon_SLATOR Candeeiro de mesa LED, flexível_1.jpg",
             "link": "https://amzn.to/4u5poq2",
             "featured": true
         },
@@ -133,7 +140,7 @@
             "name": "IBUYKE Prateleira organizadora de secretária",
             "price": "-18% 32,57€",
             "category": "Acessórios",
-            "image": "amazon_IBUYKE Prateleira organizadora de secretária_1.jpg",
+            "image": "AMAZON/amazon_IBUYKE Prateleira organizadora de secretária_1.jpg",
             "link": "https://amzn.to/4fcCEUY",
             "featured": true
         },
@@ -142,53 +149,44 @@
             "name": "Tomada de mesa com USB C",
             "price": "Oferta por tempo limitado 32,26€",
             "category": "Acessórios",
-            "image": "amazon_Tomada de mesa com USB C.jpg",
+            "image": "AMAZON/amazon_Tomada de mesa com USB C.jpg",
             "link": "https://amzn.to/4dkKPw7",
             "featured": true
         },
         {
             "affiliate": "AliExpress",
             "name": "Mesa de jogos Coleshome 120x120 cm",
-            "price": "103,35€ Economize 84,32€ 187,67€",
+            "price": "103,35€ Economize 84,32€  -187,67€",
             "category": "Mesa",
-            "image": "Mesa de jogos Coleshome 120x120 cm.jpg",
+            "image": "ALIEXPRESS/Mesa de jogos Coleshome 120x120 cm.jpg",
             "link": "https://s.click.aliexpress.com/e/_c32MJXfh",
             "featured": true
         },
         {
             "affiliate": "AliExpress",
-            "name": "Mesa de computador Coleshome com 3 gavetas",
-            "price": "138,87€ Economize 126,42€ 265,29€",
-            "category": "Mesa",
-            "image": "Mesa de computador Coleshome com 3 gavetas.jpg",
-            "link": "https://s.click.aliexpress.com/e/_c4cq8Y9p",
-            "featured": true
-        },
-        {
-            "affiliate": "AliExpress",
             "name": "Cadeira de escritório, cadeira de computador",
-            "price": "171,36€ 33% de desconto255,76€",
+            "price": "171,36€ 33% de desconto 255,76€",
             "category": "Cadeira",
-            "image": "Cadeira de escritório, cadeira de computador.jpg",
+            "image": "ALIEXPRESS/Cadeira de escritório, cadeira de computador.jpg",
             "link": "https://s.click.aliexpress.com/e/_c3SrjooR",
             "featured": true
         },
         {
             "affiliate": "AliExpress",
             "name": "Cadeira Ergonômica de Couro PU para Jogos",
-            "price": "194,80€ Economize 221,10€",
+            "price": "194,78€ Economize 221,12€  - 415,90€",
             "category": "Cadeira",
-            "image": "Cadeira Ergonômica de Couro PU para Jogos.jpg",
+            "image": "ALIEXPRESS/Cadeira Ergonômica de Couro PU para Jogos.jpg",
             "link": "https://s.click.aliexpress.com/e/_c3aGI5yF",
             "featured": true
         },
         {
             "affiliate": "AliExpress",
-            "name": "Luminária de mesa LED ultrabrilhante",
-            "price": "40,03€ Economize 75,13€",
+            "name": "Luminária de mesa LED ultrabrilhante e confortável ",
+            "price": "40,03€ Economize 75,13€  -115,16€",
             "category": "Iluminação",
-            "image": "Luminária de mesa LED ultrabrilhante.jpg",
-            "link": "https://s.click.aliexpress.com/e/_c43zgSfz",
+            "image": "ALIEXPRESS/AliExpress_Luminária de mesa LED_1.jpg",
+            "link": "https://s.click.aliexpress.com/e/_c4Vi7oYf",
             "featured": true
         }
     ]
