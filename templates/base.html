@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SkyRoot | Executive Office Solutions</title>
     <style>
-        body { margin: 0; font-family: 'Inter', sans-serif; background-color: #ffffff; display: flex; flex-direction: column; min-height: 100vh; }
+        body { margin: 0; font-family: 'Inter', sans-serif; background-color: #ffffff; display: flex; flex-direction: column; min-height: 100vh; top: 0 !important; }
         main { flex: 1; }
 
         header { background: #fff; border-bottom: 1px solid #000; position: sticky; top: 0; z-index: 9999; height: 80px; display: flex; align-items: center; }
         nav { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; width: 100%; margin: auto; padding: 0 40px; }
         .logo a { font-size: 1.1rem; letter-spacing: 5px; text-transform: uppercase; font-weight: bold; color: #000; text-decoration: none; }
 
-        /* Botão Hambúrguer (Oculto no Computador e Tablet) */
         .menu-toggle { display: none; background: none; border: none; font-size: 1.3rem; font-weight: bold; cursor: pointer; color: #000; text-transform: uppercase; letter-spacing: 2px; }
 
         .nav-links { display: flex; gap: 5px; list-style: none; margin: 0; padding: 0; flex-grow: 1; justify-content: center; }
@@ -22,7 +21,11 @@
         .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background: #fff; min-width: 160px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid #eee; padding: 10px 0; z-index: 100000; }
         .dropdown-content a { color: #000 !important; padding: 10px 20px !important; font-size: 0.55rem !important; display: block !important; text-transform: uppercase !important; letter-spacing: 1px !important; text-decoration: none; }
 
-        /* Comportamento de Hover dinâmico em ecrãs de Computador Grande */
+        /* Ocultar elementos indesejados da Google */
+        .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame, #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+        .goog-te-gadget-simple { background-color: #fff !important; border: 1px solid #000 !important; padding: 5px 10px !important; border-radius: 2px !important; font-size: 0.6rem !important; font-family: 'Inter', sans-serif !important; text-transform: uppercase !important; letter-spacing: 1px !important; cursor: pointer; }
+        .goog-te-gadget-icon { display: none !important; }
+
         @media (min-width: 1201px) {
             .nav-links li:hover .dropdown-content { display: block; }
         }
@@ -36,53 +39,28 @@
         .footer-links a { text-transform: uppercase; font-size: 0.5rem; letter-spacing: 2px; color: #000; text-decoration: none; font-weight: 600; }
         .copyright { font-size: 0.5rem; letter-spacing: 4px; color: #000; text-transform: uppercase; margin: 0; }
 
-        /* --- COMPUTADOR REDUZIDO / JANELA ENCOLHIDA / TABLETS --- */
         @media (max-width: 1200px) and (min-width: 768px) {
             header { height: auto; padding: 15px 0; }
             nav { flex-direction: column; gap: 15px; padding: 0 20px; }
-            .nav-links {
-                display: flex !important;
-                flex-wrap: wrap !important;
-                justify-content: center !important;
-                width: 100%;
-                gap: 10px !important;
-            }
+            .nav-links { display: flex !important; flex-wrap: wrap !important; justify-content: center !important; width: 100%; gap: 10px !important; }
             .nav-links li a { font-size: 0.55rem; padding: 8px 10px; text-align: center; }
             .nav-right { width: 100%; justify-content: center; border-top: 1px solid #eee; padding-top: 10px; }
-
-            /* Garante o posicionamento correto do menu suspenso em ecrãs encolhidos */
             .dropdown-content { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 1px solid #ddd; }
         }
 
-        /* --- ADAPTAÇÃO TOTAL PARA TELEMÓVEIS --- */
         @media (max-width: 767px) {
             header { height: 80px; padding: 0; }
             nav { flex-direction: row; justify-content: space-between; padding: 0 20px; height: 100%; position: relative; }
-
             .menu-toggle { display: block; }
             .nav-right { display: none !important; }
-
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                text-align: center;
-                gap: 0;
-                position: absolute;
-                top: 80px;
-                left: 0;
-                background: #fff;
-                border-bottom: 1px solid #000;
-                padding: 10px 0;
-            }
-
+            .nav-links { display: none; flex-direction: column; width: 100%; text-align: center; gap: 0; position: absolute; top: 80px; left: 0; background: #fff; border-bottom: 1px solid #000; padding: 10px 0; }
             .nav-links.active { display: flex; }
             .nav-links li { width: 100%; }
             .nav-links li a { padding: 15px 0; font-size: 0.75rem; width: 100%; display: block; border-bottom: 1px solid #f9f9f9; box-sizing: border-box; }
-
             .dropdown-content { position: static; display: none; box-shadow: none; border: none; background: #fafafa; padding: 0; transform: none; left: 0; }
             .dropdown-content a { font-size: 0.65rem !important; padding: 12px 0 !important; border-bottom: 1px solid #eee; }
             .footer-links { flex-wrap: wrap; gap: 20px; padding: 0 20px; }
+            #google_translate_element { margin-left: 0; margin-top: 10px; }
         }
     </style>
 </head>
@@ -91,13 +69,10 @@
     <header>
         <nav>
             <div class="logo"><a href="/">SKYROOT</a></div>
-
             <button class="menu-toggle" onclick="toggleNav()">Menu ☰</button>
 
             <ul class="nav-links" id="menuList">
                 <li><a href="/">Home</a></li>
-
-                <!-- AMAZON GLOBAL -->
                 <li>
                     <a href="javascript:void(0)" onclick="toggleSubMenu(this)">Amazon Global ▾</a>
                     <div class="dropdown-content">
@@ -106,8 +81,6 @@
                         <a href="/produtos/amazon?cat=Cadeira">Cadeiras</a>
                     </div>
                 </li>
-
-                <!-- ALIEXPRESS (PT/ES) -->
                 <li>
                     <a href="javascript:void(0)" onclick="toggleSubMenu(this)">AliExpress (PT/ES) ▾</a>
                     <div class="dropdown-content">
@@ -116,8 +89,6 @@
                         <a href="/produtos/aliexpress-pt-es?cat=Cadeira">Cadeiras</a>
                     </div>
                 </li>
-
-                <!-- ALIEXPRESS (BR) -->
                 <li>
                     <a href="javascript:void(0)" onclick="toggleSubMenu(this)">AliExpress (BR) ▾</a>
                     <div class="dropdown-content">
@@ -126,8 +97,6 @@
                         <a href="/produtos/aliexpress-br?cat=Cadeira">Cadeiras</a>
                     </div>
                 </li>
-
-                <!-- EBAY -->
                 {% for region in ['PT', 'ES', 'BR'] %}
                 <li>
                     <a href="javascript:void(0)" onclick="toggleSubMenu(this)">eBay ({{ region }}) ▾</a>
@@ -139,6 +108,9 @@
                 </li>
                 {% endfor %}
             </ul>
+
+            <!-- CAIXA DO TRADUTOR LOCALIZADA NA NAVBAR -->
+            <div id="google_translate_element"></div>
 
             <div class="nav-right">
                 {% if session.get('logged_in') %}
@@ -154,6 +126,20 @@
         {% block content %}{% endblock %}
     </main>
 
+    <div id="cookie-v3" style="display:none; position:fixed; bottom:20px; left:50%; transform:translateX(-50%); width:90%; max-width:550px; background:#fff; border:1px solid #000; padding:25px; z-index:10001; box-shadow:0 15px 50px rgba(0,0,0,0.3); font-family: 'Inter', sans-serif; box-sizing: border-box;">
+        <div style="text-align:right; margin-bottom:15px;">
+            <a href="javascript:void(0)" onclick="fecharV3()" style="font-size:0.6rem; color:#999; text-decoration:none; text-transform:uppercase; font-weight:bold; letter-spacing: 1px;">Continuar sem aceitar →</a>
+        </div>
+        <h4 style="margin:0 0 10px 0; font-size:0.8rem; text-transform:uppercase; letter-spacing:2px; font-weight:800; color:#000;">Política de Cookies</h4>
+        <p style="font-size:0.65rem; line-height:1.6; color:#444; margin-bottom:20px;">
+            Este site utiliza cookies para garantir a melhor experiência. Ao clicar em "Aceitar Tudo", autoriza o uso de cookies de marketing para os nossos parceiros.
+        </p>
+        <div style="display:flex; gap:10px;">
+            <button onclick="alert('Definições detalhadas em breve.')" style="flex:1; background:#fff; color:#000; border:1px solid #000; padding:12px; font-size:0.6rem; font-weight:bold; cursor:pointer; text-transform:uppercase; letter-spacing: 1px; box-sizing: border-box;">Gerir</button>
+            <button onclick="aceitarV3()" style="flex:1; background:#000; color:#fff; border:none; padding:12px; font-size:0.6rem; font-weight:bold; cursor:pointer; text-transform:uppercase; letter-spacing: 1px; box-sizing: border-box;">Aceitar Tudo</button>
+        </div>
+    </div>
+
     <footer>
         <div class="footer-links">
             <a href="/termos">Termos</a>
@@ -165,14 +151,25 @@
         <p class="copyright">&copy; 2026 SKYROOT GLOBAL ASSETS</p>
     </footer>
 
-    <script>
-        // Gere a abertura do menu principal em telemóveis
+    <!-- NOVO ENDPOINT ATUALIZADO DO GOOGLE TRANSLATE COM ELEMENT CORRETO -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'pt',
+                includedLanguages: 'pt,en,es',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="google.com"></script>
+
+    <script type="text/javascript">
         function toggleNav() {
             var menu = document.getElementById('menuList');
             menu.classList.toggle('active');
         }
 
-        // Sistema unificado de cliques táteis e janelas reduzidas abaixo de 1200px
         function toggleSubMenu(el) {
             if (window.innerWidth <= 1200) {
                 var drop = el.nextElementSibling;
@@ -187,9 +184,8 @@
             }
         }
 
-        // Fecha os submenus se o utilizador clicar fora deles no ecrã encolhido
         window.onclick = function(event) {
-            if (!event.target.matches('.nav-links li a')) {
+            if (!event.target.matches('.nav-links li a') && !event.target.matches('.menu-toggle')) {
                 document.querySelectorAll('.dropdown-content').forEach(function(d) {
                     if (window.innerWidth <= 1200) {
                         d.style.display = 'none';
@@ -197,6 +193,15 @@
                 });
             }
         }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            if (!localStorage.getItem('skyroot_v3')) {
+                document.getElementById('cookie-v3').style.display = 'block';
+            }
+        });
+
+        function aceitarV3() { localStorage.setItem('skyroot_v3', 'aceite'); document.getElementById('cookie-v3').style.display = 'none'; }
+        function fecharV3() { localStorage.setItem('skyroot_v3', 'recusado'); document.getElementById('cookie-v3').style.display = 'none'; }
     </script>
 </body>
 </html>
