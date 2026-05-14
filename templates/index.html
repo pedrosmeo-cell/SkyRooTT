@@ -32,19 +32,20 @@
 
         <!-- BOTÕES COM OS LINKS REAIS DAS LOJAS ATUALIZADOS -->
         <div class="partners-wrapper">
-            <div class="partners-container">
-                {% set parceiros = [
-                    {'name': 'Amazon Global', 'url': 'https://amzn.to'},
-                    {'name': 'AliExpress (PT/ES)', 'url': 'aliexpress.com'},
-                    {'name': 'AliExpress (BR)', 'url': 'https://s.click.aliexpress.com/e/_c3remHR5'}
-                ] %}
-                {% for loja in parceiros %}
-                <a href="{{ loja.url }}" target="_blank" rel="nofollow noopener noreferrer" class="partner-btn">
-                    {{ loja.name }} ↗
-                </a>
-                {% endfor %}
-            </div>
-        </div>
+    <div class="partners-container">
+        {% set parceiros = [
+            {'name': 'Amazon Global', 'url': 'https://amzn.to/42AvsKX'},
+            {'name': 'AliExpress (PT/ES)', 'url': 'https://s.click.aliexpress.com/e/_c4pB6B6T'},
+            {'name': 'AliExpress (BR)', 'url': 'https://s.click.aliexpress.com/e/_c2x3NbXH'}
+        ] %}
+        {% for loja in parceiros %}
+        <a href="{{ loja.url }}" target="_blank" rel="nofollow noopener noreferrer" class="partner-btn">
+            {{ loja.name }} ↗
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
         <div class="hero-spacer"></div>
     </div>
 </div>

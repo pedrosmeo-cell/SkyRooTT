@@ -1,82 +1,65 @@
 {% extends "base.html" %}
 {% block content %}
-<style>
-    /* Estilos locais para garantir a responsividade do formulário */
-    @media (max-width: 768px) {
-        .admin-grid {
-            grid-template-columns: 1fr !important;
-            gap: 15px !important;
-        }
-        .admin-featured {
-            grid-column: span 1 !important;
-        }
-    }
-</style>
+<div class="admin-container">
+    <h1 class="admin-title">Gestão de Inventário</h1>
 
-<div style="max-width: 900px; margin: 50px auto; padding: 0 20px; font-family: 'Inter', sans-serif;">
-    <h1 style="text-transform: uppercase; letter-spacing: 3px; font-size: 1.2rem; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 30px;">Gestão de Inventário</h1>
-
-    <div style="background: #fff; padding: 30px; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 50px;">
+    <div class="form-wrapper">
         <form action="/admin" method="POST">
-            <div class="admin-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="admin-grid">
 
-                <!-- LOJA (ATUALIZADA) -->
-                <div>
-                    <label style="display:block; font-size:0.7rem; font-weight:bold; margin-bottom:8px;">LOJA:</label>
-                    <select name="affiliate" style="width:100%; padding:12px; border: 2px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                <!-- LOJA (EBAY REMOVIDO DA LISTA) -->
+                <div class="form-group">
+                    <label class="form-label">LOJA:</label>
+                    <select name="affiliate" class="form-control">
                         <option value="Amazon">Amazon Global</option>
                         <option value="AliExpress-PT-ES">AliExpress (PT/ES)</option>
                         <option value="AliExpress-BR">AliExpress (BR)</option>
-                        <option value="eBay-PT">eBay (PT)</option>
-                        <option value="eBay-ES">eBay (ES)</option>
-                        <option value="eBay-BR">eBay (BR)</option>
                     </select>
                 </div>
 
                 <!-- NOME -->
-                <div>
-                    <label style="display:block; font-size:0.7rem; font-weight:bold; margin-bottom:8px;">NOME DO PRODUTO:</label>
-                    <input type="text" name="name" required style="width:100%; padding:12px; border: 2px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                <div class="form-group">
+                    <label class="form-label">NOME DO PRODUTO:</label>
+                    <input type="text" name="name" required class="form-control">
                 </div>
 
                 <!-- PREÇO -->
-                <div>
-                    <label style="display:block; font-size:0.7rem; font-weight:bold; margin-bottom:8px;">PREÇO:</label>
-                    <input type="text" name="price" placeholder="0.00€" style="width:100%; padding:12px; border: 2px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                <div class="form-group">
+                    <label class="form-label">PREÇO:</label>
+                    <input type="text" name="price" placeholder="0.00€" class="form-control">
                 </div>
 
-                <!-- CATEGORIA (APENAS MESA E CADEIRA) -->
-                <div>
-                    <label style="display:block; font-size:0.7rem; font-weight:bold; margin-bottom:8px;">CATEGORIA:</label>
-                    <select name="category" style="width:100%; padding:12px; border: 2px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                <!-- CATEGORIA -->
+                <div class="form-group">
+                    <label class="form-label">CATEGORIA:</label>
+                    <select name="category" class="form-control">
                         <option value="Mesa">Mesa</option>
                         <option value="Cadeira">Cadeira</option>
                     </select>
                 </div>
 
                 <!-- IMAGEM -->
-                <div>
-                    <label style="display:block; font-size:0.7rem; font-weight:bold; margin-bottom:8px;">FICHEIRO DA FOTO (Ex: mesa1.jpg):</label>
-                    <input type="text" name="image_url" required style="width:100%; padding:12px; border: 2px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                <div class="form-group">
+                    <label class="form-label">FICHEIRO DA FOTO (Ex: mesa1.jpg):</label>
+                    <input type="text" name="image_url" required class="form-control">
                 </div>
 
                 <!-- LINK -->
-                <div>
-                    <label style="display:block; font-size:0.7rem; font-weight:bold; margin-bottom:8px;">LINK DE AFILIADO:</label>
-                    <input type="text" name="link" required style="width:100%; padding:12px; border: 2px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                <div class="form-group">
+                    <label class="form-label">LINK DE AFILIADO:</label>
+                    <input type="text" name="link" required class="form-control">
                 </div>
 
                 <!-- DESTAQUE -->
-                <div class="admin-featured" style="grid-column: span 2; display: flex; align-items: center; gap: 10px; margin-top: 10px; background: #f9f9f9; padding: 15px; border-radius: 4px; border: 1px dashed #ccc; box-sizing: border-box;">
-                    <input type="checkbox" name="featured" id="featured" value="yes" style="width: 20px; height: 20px; cursor: pointer;">
-                    <label for="featured" style="font-size: 0.75rem; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; color: #1a1a1a;">
+                <div class="admin-featured">
+                    <input type="checkbox" name="featured" id="featured" value="yes" class="checkbox-control">
+                    <label for="featured" class="checkbox-label">
                         ⭐ DESTACAR ESTE PRODUTO NA HOME (Destaques do Mês)
                     </label>
                 </div>
             </div>
 
-            <button type="submit" style="width:100%; margin-top:30px; background:#000; color:#fff; padding:15px; border:none; cursor:pointer; font-weight:bold; text-transform:uppercase; letter-spacing:2px; transition: 0.3s; box-sizing: border-box;"
-                    onmouseover="this.style.background='#3498db'" onmouseout="this.style.background='#000'">
+            <button type="submit" class="btn-submit">
                 REGISTAR PRODUTO NO SISTEMA
             </button>
         </form>

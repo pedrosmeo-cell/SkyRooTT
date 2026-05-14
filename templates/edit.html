@@ -1,46 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
-<style>
-    /* Estilos locais para garantir a responsividade do formulário */
-    @media (max-width: 768px) {
-        .edit-grid {
-            grid-template-columns: 1fr !important;
-            gap: 15px !important;
-        }
-        .edit-featured {
-            grid-column: span 1 !important;
-        }
-        .edit-actions {
-            flex-direction: column-reverse !important;
-            gap: 15px !important;
-        }
-        .edit-actions a, .edit-actions button {
-            width: 100% !important;
-            flex: none !important;
-            box-sizing: border-box;
-        }
-    }
-</style>
+<div class="edit-container">
+    <h1 class="edit-title">Editar Ativo</h1>
 
-<div style="max-width: 900px; margin: 50px auto; padding: 0 20px; font-family: 'Inter', sans-serif;">
-    <h1 style="text-transform: uppercase; letter-spacing: 3px; font-size: 1.2rem; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 30px;">Editar Ativo</h1>
-
-    <div style="background: #fff; padding: 30px; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 50px;">
+    <div class="form-wrapper">
         <form action="/edit/{{ product_id }}" method="POST">
-            <div class="edit-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="edit-grid">
 
-                <!-- LOJA (ATUALIZADA) -->
-                <div>
-                    <label style="display:block; font-size:0.7rem; font-weight:bold; margin-bottom:8px;">LOJA:</label>
-                    <select name="affiliate" style="width:100%; padding:12px; border: 2px solid #ccc; border-radius: 4px; box-sizing: border-box;">
-                        {% for store in ['Amazon', 'AliExpress-PT-ES', 'AliExpress-BR', 'eBay-PT', 'eBay-ES', 'eBay-BR'] %}
+                <!-- LOJA (EBAY REMOVIDO DA LISTA COM VALIDAÇÃO DINÂMICA) -->
+                <div class="form-group">
+                    <label class="form-label">LOJA:</label>
+                    <select name="affiliate" class="form-control">
+                        {% for store in ['Amazon', 'AliExpress-PT-ES', 'AliExpress-BR'] %}
                         <option value="{{ store }}" {% if p.affiliate == store %}selected{% endif %}>
                             {% if store == 'Amazon' %}Amazon Global
                             {% elif store == 'AliExpress-PT-ES' %}AliExpress (PT/ES)
                             {% elif store == 'AliExpress-BR' %}AliExpress (BR)
-                            {% elif store == 'eBay-PT' %}eBay (PT)
-                            {% elif store == 'eBay-ES' %}eBay (ES)
-                            {% elif store == 'eBay-BR' %}eBay (BR)
                             {% endif %}
                         </option>
                         {% endfor %}
@@ -48,21 +23,21 @@
                 </div>
 
                 <!-- NOME -->
-                <div>
-                    <label style="display:block; font-size:0.7rem; font-weight:bold; margin-bottom:8px;">NOME DO PRODUTO:</label>
-                    <input type="text" name="name" value="{{ p.name }}" required style="width:100%; padding:12px; border: 2px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                <div class="form-group">
+                    <label class="form-label">NOME DO PRODUTO:</label>
+                    <input type="text" name="name" value="{{ p.name }}" required class="form-control">
                 </div>
 
                 <!-- PREÇO -->
-                <div>
-                    <label style="display:block; font-size:0.7rem; font-weight:bold; margin-bottom:8px;">PREÇO:</label>
-                    <input type="text" name="price" value="{{ p.price }}" placeholder="0.00€" style="width:100%; padding:12px; border: 2px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                <div class="form-group">
+                    <label class="form-label">PREÇO:</label>
+                    <input type="text" name="price" value="{{ p.price }}" placeholder="0.00€" class="form-control">
                 </div>
 
-                <!-- CATEGORIA (APENAS MESA E CADEIRA) -->
-                <div>
-                    <label style="display:block; font-size:0.7rem; font-weight:bold; margin-bottom:8px;">CATEGORIA:</label>
-                    <select name="category" style="width:100%; padding:12px; border: 2px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                <!-- CATEGORIA -->
+                <div class="form-group">
+                    <label class="form-label">CATEGORIA:</label>
+                    <select name="category" class="form-control">
                         {% for cat in ['Mesa', 'Cadeira'] %}
                         <option value="{{ cat }}" {% if p.category == cat %}selected{% endif %}>{{ cat }}</option>
                         {% endfor %}
@@ -70,30 +45,30 @@
                 </div>
 
                 <!-- IMAGEM -->
-                <div>
-                    <label style="display:block; font-size:0.7rem; font-weight:bold; margin-bottom:8px;">FICHEIRO DA FOTO (Ex: mesa1.jpg):</label>
-                    <input type="text" name="image_url" value="{{ p.image }}" required style="width:100%; padding:12px; border: 2px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                <div class="form-group">
+                    <label class="form-label">FICHEIRO DA FOTO (Ex: mesa1.jpg):</label>
+                    <input type="text" name="image_url" value="{{ p.image }}" required class="form-control">
                 </div>
 
                 <!-- LINK -->
-                <div>
-                    <label style="display:block; font-size:0.7rem; font-weight:bold; margin-bottom:8px;">LINK DE AFILIADO:</label>
-                    <input type="text" name="link" value="{{ p.link }}" required style="width:100%; padding:12px; border: 2px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                <div class="form-group">
+                    <label class="form-label">LINK DE AFILIADO:</label>
+                    <input type="text" name="link" value="{{ p.link }}" required class="form-control">
                 </div>
 
                 <!-- DESTAQUE -->
-                <div class="edit-featured" style="grid-column: span 2; display: flex; align-items: center; gap: 10px; margin-top: 10px; background: #f9f9f9; padding: 15px; border-radius: 4px; border: 1px dashed #ccc; box-sizing: border-box;">
-                    <input type="checkbox" name="featured" id="featured" value="yes" {% if p.featured %}checked{% endif %} style="width: 20px; height: 20px; cursor: pointer;">
-                    <label for="featured" style="font-size: 0.75rem; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; color: #1a1a1a;">
+                <div class="edit-featured">
+                    <input type="checkbox" name="featured" id="featured" value="yes" {% if p.featured %}checked{% endif %} class="checkbox-control">
+                    <label for="featured" class="checkbox-label">
                         ⭐ DESTACAR ESTE PRODUTO NA HOME
                     </label>
                 </div>
             </div>
 
             <!-- BOTÕES DE AÇÃO -->
-            <div class="edit-actions" style="display: flex; gap: 10px; margin-top: 30px;">
-                <a href="/dashboard" style="flex: 1; text-align: center; background: #eee; color: #000; padding: 15px; text-decoration: none; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; border-radius: 2px; box-sizing: border-box;">Cancelar</a>
-                <button type="submit" style="flex: 2; background: #000; color: #fff; padding: 15px; border: none; cursor: pointer; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; box-sizing: border-box;">Atualizar Ativo</button>
+            <div class="edit-actions">
+                <a href="/dashboard" class="btn-cancel">Cancelar</a>
+                <button type="submit" class="btn-update">Atualizar Ativo</button>
             </div>
         </form>
     </div>
