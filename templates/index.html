@@ -1,106 +1,119 @@
 {% extends "base.html" %}
 {% block content %}
 
-<!-- ZONA DE IMPACTO: Imagem de fundo unificada -->
+<style>
+    /* --- CONFIGURAÇÕES DE RESPONSIVIDADE PARA TELEMÓVEL --- */
+    @media (max-width: 991px) {
+        .mosaic-container { height: auto !important; grid-template-columns: 1fr !important; gap: 15px !important; }
+        .mosaic-subgrid { height: auto !important; grid-template-rows: 1fr 1fr !important; gap: 15px !important; }
+        .mosaic-item { height: 300px !important; }
+        .partners-container { gap: 10px !important; }
+        .partner-btn { width: 100% !important; min-width: 0 !important; box-sizing: border-box; }
+        .highlights-section { padding: 40px 20px !important; }
+        .highlights-grid { grid-template-columns: 1fr !important; gap: 30px !important; }
+        .network-card { padding: 30px 20px !important; }
+    }
+</style>
+
+<!-- ZONA DE IMPACTO (MOSAICO PRINCIPAL PRESERVADO) -->
 <div style="position: relative; padding: 60px 0 0 0; background-image: url('{{ url_for('static', filename='images/fundo_home.jpg') }}'); background-size: cover; background-position: center; background-attachment: fixed; overflow: hidden; margin-top: 0;">
-
     <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1;"></div>
-
     <div style="position: relative; z-index: 2;">
 
-        <!-- 1. MOSAICO DE IMAGENS (OS "3 MÚSICOS") -->
-        <div style="max-width: 1400px; margin: auto; padding: 0 40px;">
-            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; height: 550px; overflow: hidden;">
-                <div style="background: #fff; overflow: hidden; border: 1px solid #eee; border-radius: 2px; box-shadow: 0 30px 60px rgba(0,0,0,0.4);">
+        <!-- MOSAICO DE IMAGENS -->
+        <div style="max-width: 1400px; margin: auto; padding: 0 40px; box-sizing: border-box;">
+            <div class="mosaic-container" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; height: 550px; overflow: hidden;">
+                <div class="mosaic-item" style="background: #fff; overflow: hidden; border: 1px solid #eee; border-radius: 2px; box-shadow: 0 30px 60px rgba(0,0,0,0.4);">
                     <img src="{{ url_for('static', filename='images/Hiscritorio1.jpg') }}" style="width: 100%; height: 100%; object-fit: cover; transition: 0.5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                 </div>
-                <div style="display: grid; grid-template-rows: 1fr 1fr; gap: 20px; height: 550px;">
-                    <div style="background: #fff; overflow: hidden; border: 1px solid #eee; border-radius: 2px; box-shadow: 0 30px 60px rgba(0,0,0,0.4);">
+                <div class="mosaic-subgrid" style="display: grid; grid-template-rows: 1fr 1fr; gap: 20px; height: 550px;">
+                    <div class="mosaic-item" style="background: #fff; overflow: hidden; border: 1px solid #eee; border-radius: 2px; box-shadow: 0 30px 60px rgba(0,0,0,0.4);">
                         <img src="{{ url_for('static', filename='images/Hiscritorio2.jpg') }}" style="width: 100%; height: 100%; object-fit: cover; transition: 0.5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                     </div>
-                    <div style="background: #fff; overflow: hidden; border: 1px solid #eee; border-radius: 2px; box-shadow: 0 30px 60px rgba(0,0,0,0.4);">
+                    <div class="mosaic-item" style="background: #fff; overflow: hidden; border: 1px solid #eee; border-radius: 2px; box-shadow: 0 30px 60px rgba(0,0,0,0.4);">
                         <img src="{{ url_for('static', filename='images/Hiscritorio3.jpg') }}" style="width: 100%; height: 100%; object-fit: cover; transition: 0.5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 2. LINHA DE CURADORIA -->
-        <div style="max-width: 1400px; margin: 100px auto 20px auto; padding: 0 40px;">
+        <!-- LINHA DE CURADORIA -->
+        <div style="max-width: 1400px; margin: 100px auto 20px auto; padding: 0 40px; box-sizing: border-box;">
             <div style="border-top: 1px solid rgba(255,255,255,0.3); display: flex; justify-content: center;">
-                <span style="background: #fff; color: #000; padding: 8px 40px; position: relative; top: -18px; text-transform: uppercase; letter-spacing: 5px; font-size: 0.6rem; font-weight: 800; border-radius: 2px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+                <span style="background: #fff; color: #000; padding: 8px 40px; position: relative; top: -18px; text-transform: uppercase; letter-spacing: 5px; font-size: 0.6rem; font-weight: 800; border-radius: 2px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); white-space: nowrap;">
                     Curadoria por Marca
                 </span>
             </div>
         </div>
 
-        <!-- 3. LINKS DE PARCEIROS -->
-        <div style="max-width: 1400px; margin: 40px auto 0; text-align: center; padding: 0 40px;">
-            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        <!-- BOTÕES DE PARCEIROS REGIONAIS -->
+        <div style="max-width: 1400px; margin: 40px auto 0; text-align: center; padding: 0 40px; box-sizing: border-box;">
+            <div class="partners-container" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
                 {% set parceiros = [
                     {'name': 'Amazon Global', 'url': 'https://amzn.to'},
-                    {'name': 'Worten Solutions', 'url': 'https://worten.pt'},
-                    {'name': 'Shopee Official', 'url': 'https://shopee.com.br'},
-                    {'name': 'AliExpress Business', 'url': 'https://aliexpress.com'}
+                    {'name': 'AliExpress (PT/ES)', 'url': 'https://aliexpress.com'},
+                    {'name': 'AliExpress (BR)', 'url': 'https://aliexpress.com'},
+                    {'name': 'eBay (PT)', 'url': 'https://ebay.com'},
+                    {'name': 'eBay (ES)', 'url': 'https://ebay.es'},
+                    {'name': 'eBay (BR)', 'url': 'https://ebay.com'}
                 ] %}
                 {% for loja in parceiros %}
-                <a href="{{ loja.url }}" target="_blank" rel="nofollow noopener noreferrer"
-                   style="text-decoration: none; color: #000; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; padding: 12px 25px; border: 1px solid #fff; transition: 0.3s; background: #fff; min-width: 200px;"
+                <a href="{{ loja.url }}" target="_blank" rel="nofollow noopener noreferrer" class="partner-btn"
+                   style="text-decoration: none; color: #000; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; padding: 12px 25px; border: 1px solid #fff; transition: 0.3s; background: #fff; min-width: 200px; display: inline-block;"
                    onmouseover="this.style.background='transparent'; this.style.color='#fff';" onmouseout="this.style.background='#fff'; this.style.color='#000';">
                     {{ loja.name }} ↗
                 </a>
                 {% endfor %}
             </div>
         </div>
-
         <div style="width: 1px; height: 60px; background: #fff; margin: 40px auto 0; opacity: 0.2;"></div>
     </div>
 </div>
 
-<!-- SECÇÃO DE DESTAQUES (COM RELEVO NOS PRODUTOS) -->
-<section style="max-width: 1400px; margin: 0 auto; padding: 0 40px 100px; clear: both;">
+<!-- SECÇÃO REFORMULADA: APRESENTAÇÃO DA REDE TEMÁTICA AFILIADA (PREVISÓRIA) -->
+<section class="highlights-section" style="max-width: 1400px; margin: 0 auto; padding: 80px 40px; clear: both; box-sizing: border-box;">
 
-    {% set stores = products|map(attribute='affiliate')|unique|list %}
+    <div style="display: flex; align-items: center; margin-bottom: 50px;">
+        <h2 style="text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; font-weight: 800; margin: 0; white-space: nowrap; color: #000;">
+            | SKYROOT HUB: PORTFÓLIO DE PROJETOS
+        </h2>
+        <div style="flex-grow: 1; border-top: 2px solid #000; margin-left: 20px;"></div>
+    </div>
 
-    {% for store in stores %}
-        <div style="display: flex; align-items: center; margin: 0; width: 100%; position: relative; top: -1px;">
-            <h2 style="text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; font-weight: 800; margin: 0; padding: 25px 20px 25px 0; white-space: nowrap; color: #000; background: transparent;">
-                | DESTAQUES {{ store }}
-            </h2>
-            <div style="flex-grow: 1; border-top: 2px solid #000;"></div>
-        </div>
+    <!-- GRELHA DE ANTECIPAÇÃO DOS FUTUROS WEBSITES DA REDE -->
+    <div class="highlights-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 40px;">
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 60px; margin-bottom: 80px;">
-            {% for p in products if p.affiliate == store %}
-            <!-- CARTÃO COM RELEVO (Igual ao mosaico de cima) -->
-            <div style="background: #fff; border: 1px solid #eee; padding: 0; text-align: center; border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); transition: 0.3s; overflow: hidden;"
-                 onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 30px 60px rgba(0,0,0,0.15)';"
-                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.08)';">
-
-                <div style="height: 350px; display: flex; align-items: center; justify-content: center; background: #fdfdfd; position: relative; overflow: hidden; border-bottom: 1px solid #f9f9f9;">
-                    <img src="{{ url_for('static', filename='images/' + p.image) }}" style="max-width: 85%; max-height: 85%; object-fit: contain; transition: 0.5s;">
-
-                    <!-- BADGE DA MARCA (NOME DA LOJA) -->
-                    <span style="position: absolute; top: 15px; right: 15px; background: #000; color: #fff; padding: 6px 12px; font-size: 0.55rem; text-transform: uppercase; font-weight: 800; letter-spacing: 1.5px; border-radius: 2px; z-index: 10;">
-                        {{ p.affiliate }}
-                    </span>
-                </div>
-
-                <div style="padding: 25px;">
-                    <h3 style="font-size: 0.75rem; text-transform: uppercase; margin: 0; min-height: 45px; letter-spacing: 1px; color: #1a1a1a; line-height: 1.5;">
-                        {{ p.name }}
-                    </h3>
-                    <p style="font-weight: 700; color: #27ae60; font-size: 1.2rem; margin: 15px 0;">
-                        {{ p.price }}
-                    </p>
-                    <a href="{{ p.link }}" target="_blank" rel="nofollow noopener noreferrer" style="display: inline-block; background: #1a1a1a; color: #fff; text-decoration: none; font-size: 0.65rem; padding: 14px 40px; letter-spacing: 2px; text-transform: uppercase; border-radius: 2px; width: 80%;">
-                        Adquirir Asset →
-                    </a>
-                </div>
+        <!-- CARD 1: MOBILIÁRIO EXECUTIVE (SITE ATUAL) -->
+        <div class="network-card" style="background: #fafafa; border: 1px solid #eee; padding: 40px; text-align: left; border-radius: 4px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; min-height: 250px;">
+            <div>
+                <span style="font-size: 0.55rem; background: #000; color: #fff; padding: 4px 8px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">ATIVO DIGITAL</span>
+                <h3 style="font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 15px 0 10px 0; color: #1a1a1a;">Executive Offices</h3>
+                <p style="font-size: 0.75rem; color: #666; line-height: 1.6; margin: 0;">Plataforma ativa de curadoria de mobiliário corporativo de alta gama, mesas e cadeiras executivas com integração direta de afiliados.</p>
             </div>
-            {% endfor %}
+            <span style="font-size: 0.6rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; color: #27ae60; margin-top: 20px;">● ONLINE & OPERACIONAL</span>
         </div>
-    {% endfor %}
+
+        <!-- CARD 2: GADGETS & TECNOLOGIA (FUTURO SITE) -->
+        <div class="network-card" style="background: #fff; border: 1px solid #eee; padding: 40px; text-align: left; border-radius: 4px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; min-height: 250px; opacity: 0.85;">
+            <div>
+                <span style="font-size: 0.55rem; background: #7f8c8d; color: #fff; padding: 4px 8px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">BREVEMENTE</span>
+                <h3 style="font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 15px 0 10px 0; color: #1a1a1a;">Tech & Gadgets</h3>
+                <p style="font-size: 0.75rem; color: #666; line-height: 1.6; margin: 0;">Portal vertical focado na análise e recomendação de dispositivos tecnológicos, setups de produtividade e acessórios digitais inteligentes.</p>
+            </div>
+            <span style="font-size: 0.6rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; color: #d35400; margin-top: 20px;">○ EM CONSTRUÇÃO</span>
+        </div>
+
+        <!-- CARD 3: ILUMINAÇÃO & AMBIENTES (FUTURO SITE) -->
+        <div class="network-card" style="background: #fff; border: 1px solid #eee; padding: 40px; text-align: left; border-radius: 4px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; min-height: 250px; opacity: 0.85;">
+            <div>
+                <span style="font-size: 0.55rem; background: #7f8c8d; color: #fff; padding: 4px 8px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">BREVEMENTE</span>
+                <h3 style="font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 15px 0 10px 0; color: #1a1a1a;">Studio Lighting</h3>
+                <p style="font-size: 0.75rem; color: #666; line-height: 1.6; margin: 0;">Especializado em soluções de iluminação de estúdio, lâmpadas ergonómicas e automação de ambientes de trabalho requintados.</p>
+            </div>
+            <span style="font-size: 0.6rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; color: #d35400; margin-top: 20px;">○ EM CONSTRUÇÃO</span>
+        </div>
+
+    </div>
 </section>
 
 {% endblock %}

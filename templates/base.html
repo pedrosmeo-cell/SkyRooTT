@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SkyRoot | Executive Office Solutions</title>
     <style>
-        /* --- ESTILOS ORIGINAIS QUE JÁ TINHAS --- */
         body { margin: 0; font-family: 'Inter', sans-serif; background-color: #ffffff; display: flex; flex-direction: column; min-height: 100vh; }
         main { flex: 1; }
 
@@ -19,17 +18,47 @@
 
         .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background: #fff; min-width: 160px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid #eee; padding: 10px 0; }
         .dropdown-content a { color: #000 !important; padding: 10px 20px !important; font-size: 0.55rem !important; display: block !important; text-transform: uppercase !important; letter-spacing: 1px !important; text-decoration: none; }
-        .nav-links li:hover .dropdown-content { display: block; }
-        .dropdown-content a:hover { background: #f9f9f9; }
+
+        /* Dropdown por hover ativo apenas em ecrãs grandes de computador */
+        @media (min-width: 992px) {
+            .nav-links li:hover .dropdown-content { display: block; }
+        }
 
         .nav-right { display: flex; align-items: center; gap: 15px; }
-        .admin-link { color: #e74c3c !important; font-weight: 800 !important; border: 1px solid #e74c3c; padding: 8px 15px !important; border-radius: 2px; text-decoration: none; font-size: 0.6rem; letter-spacing: 1px; }
-        #local-weather { font-size: 0.8rem; font-weight: 800; color: #000; border-left: 1px solid #000; padding-left: 20px; }
+        .admin-link { color: #e74c3c !important; font-weight: 800 !important; border: 1px solid #e74c3c; padding: 8px 15px !important; border-radius: 2px; text-decoration: none; font-size: 0.6rem; letter-spacing: 1px; text-transform: uppercase; }
+        #local-weather { font-size: 0.8rem; font-weight: 800; color: #000; border-left: 1px solid #000; padding-left: 20px; text-transform: uppercase; }
 
         footer { padding: 100px 0; border-top: 1px solid #000; text-align: center; background: #fff; margin-top: 50px; }
         .footer-links { display: flex; justify-content: center; gap: 40px; margin-bottom: 25px; }
         .footer-links a { text-transform: uppercase; font-size: 0.5rem; letter-spacing: 2px; color: #000; text-decoration: none; font-weight: 600; }
         .copyright { font-size: 0.5rem; letter-spacing: 4px; color: #000; text-transform: uppercase; margin: 0; }
+
+        /* --- ARRUMAÇÃO DO ESPAÇO PARA ECRÃS REDUZIDOS / TABLETS --- */
+        @media (max-width: 991px) and (min-width: 768px) {
+            header { height: auto; padding: 15px 0; }
+            nav { flex-direction: column; gap: 15px; padding: 0 30px; }
+            .nav-links {
+                display: grid !important;
+                grid-template-columns: repeat(4, 1fr) !important; /* Organiza em 4 colunas compactas */
+                width: 100%;
+                gap: 10px !important;
+            }
+            .nav-links li a { font-size: 0.55rem; padding: 6px; text-align: center; display: block; }
+            .nav-right { width: 100%; justify-content: center; border-top: 1px solid #eee; padding-top: 10px; }
+        }
+
+        /* --- ADAPTAÇÃO EXCLUSIVA PARA TELEMÓVEIS --- */
+        @media (max-width: 767px) {
+            header { height: auto; padding: 20px 0; }
+            nav { flex-direction: column; gap: 20px; padding: 0 20px; }
+            .nav-links { flex-direction: column; width: 100%; text-align: center; gap: 8px; }
+            .nav-links li { width: 100%; }
+            .nav-links li a { padding: 8px 0; font-size: 0.7rem; width: 100%; display: block; }
+            .dropdown-content { position: static; display: none; box-shadow: none; border: none; border-top: 1px dashed #eee; padding: 5px 0; background: #fafafa; }
+            .nav-right { width: 100%; justify-content: center; border-top: 1px solid #eee; padding-top: 15px; }
+            #local-weather { border-left: none; padding-left: 0; }
+            .footer-links { flex-wrap: wrap; gap: 20px; padding: 0 20px; }
+        }
     </style>
 </head>
 <body>
@@ -37,24 +66,57 @@
     <header>
         <nav>
             <div class="logo"><a href="/">SKYROOT</a></div>
+
             <ul class="nav-links">
                 <li><a href="/">Home</a></li>
-                {% for store in ['Amazon', 'Worten', 'Shopee', 'AliExpress', 'eBay'] %}
+
+                <!-- AMAZON GLOBAL -->
                 <li>
-                    <a href="/produtos/{{ store|lower }}">{{ store }}</a>
+                    <a href="javascript:void(0)" onclick="toggleMenu(this)">Amazon Global ▾</a>
                     <div class="dropdown-content">
-                        <a href="/produtos/{{ store|lower }}?cat=Mesa">Mesas</a>
-                        <a href="/produtos/{{ store|lower }}?cat=Cadeira">Cadeiras</a>
-                        <a href="/produtos/{{ store|lower }}?cat=Iluminação">Iluminação</a>
-                        <a href="/produtos/{{ store|lower }}?cat=Acessórios">Acessórios</a>
+                        <a href="/produtos/amazon">Ver Tudo</a>
+                        <a href="/produtos/amazon?cat=Mesa">Mesas</a>
+                        <a href="/produtos/amazon?cat=Cadeira">Cadeiras</a>
+                    </div>
+                </li>
+
+                <!-- ALIEXPRESS (PT/ES) -->
+                <li>
+                    <a href="javascript:void(0)" onclick="toggleMenu(this)">AliExpress (PT/ES) ▾</a>
+                    <div class="dropdown-content">
+                        <a href="/produtos/aliexpress-pt-es">Ver Tudo</a>
+                        <a href="/produtos/aliexpress-pt-es?cat=Mesa">Mesas</a>
+                        <a href="/produtos/aliexpress-pt-es?cat=Cadeira">Cadeiras</a>
+                    </div>
+                </li>
+
+                <!-- ALIEXPRESS (BR) -->
+                <li>
+                    <a href="javascript:void(0)" onclick="toggleMenu(this)">AliExpress (BR) ▾</a>
+                    <div class="dropdown-content">
+                        <a href="/produtos/aliexpress-br">Ver Tudo</a>
+                        <a href="/produtos/aliexpress-br?cat=Mesa">Mesas</a>
+                        <a href="/produtos/aliexpress-br?cat=Cadeira">Cadeiras</a>
+                    </div>
+                </li>
+
+                <!-- EBAY -->
+                {% for region in ['PT', 'ES', 'BR'] %}
+                <li>
+                    <a href="javascript:void(0)" onclick="toggleMenu(this)">eBay ({{ region }}) ▾</a>
+                    <div class="dropdown-content">
+                        <a href="/produtos/ebay-{{ region|lower }}">Ver Tudo</a>
+                        <a href="/produtos/ebay-{{ region|lower }}?cat=Mesa">Mesas</a>
+                        <a href="/produtos/ebay-{{ region|lower }}?cat=Cadeira">Cadeiras</a>
                     </div>
                 </li>
                 {% endfor %}
             </ul>
+
             <div class="nav-right">
                 {% if session.get('logged_in') %}
                     <a href="/dashboard" class="admin-link">DASHBOARD</a>
-                    <a href="/logout" style="text-decoration: none; color: #000; font-size: 0.5rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; margin-left: 5px;">SAIR</a>
+                    <a href="/logout" style="text-decoration: none; color: #000; font-size: 0.6rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-left: 5px;">SAIR</a>
                 {% endif %}
                 <div id="local-weather">18°C</div>
             </div>
@@ -73,42 +135,18 @@
             <a href="/guia">Guia</a>
             <a href="/litigios">Litígios</a>
         </div>
-        <p class="copyright">&copy; 2024 SKYROOT GLOBAL ASSETS</p>
+        <p class="copyright">&copy; 2026 SKYROOT GLOBAL ASSETS</p>
     </footer>
 
-    <!-- SISTEMA DE COOKIES SKYROOT V3 (ESTE É O NOVO CÓDIGO) -->
-    <div id="cookie-v3" style="display:none; position:fixed; bottom:20px; left:50%; transform:translateX(-50%); width:90%; max-width:550px; background:#fff; border:1px solid #000; padding:25px; z-index:10001; box-shadow:0 15px 50px rgba(0,0,0,0.3); font-family: 'Inter', sans-serif;">
-        <div style="text-align:right; margin-bottom:15px;">
-            <a href="javascript:void(0)" onclick="fecharV3()" style="font-size:0.6rem; color:#999; text-decoration:none; text-transform:uppercase; font-weight:bold; letter-spacing: 1px;">Continuar sem aceitar →</a>
-        </div>
-        <h4 style="margin:0 0 10px 0; font-size:0.8rem; text-transform:uppercase; letter-spacing:2px; font-weight:800; color:#000;">Política de Cookies</h4>
-        <p style="font-size:0.65rem; line-height:1.6; color:#444; margin-bottom:20px;">
-            Este site utiliza cookies para garantir a melhor experiência. Ao clicar em "Aceitar Tudo", autoriza o uso de cookies de marketing para os nossos parceiros.
-        </p>
-        <div style="display:flex; gap:10px;">
-            <button onclick="alert('Definições detalhadas em breve.')" style="flex:1; background:#fff; color:#000; border:1px solid #000; padding:12px; font-size:0.6rem; font-weight:bold; cursor:pointer; text-transform:uppercase; letter-spacing: 1px;">Gerir</button>
-            <button onclick="aceitarV3()" style="flex:1; background:#000; color:#fff; border:none; padding:12px; font-size:0.6rem; font-weight:bold; cursor:pointer; text-transform:uppercase; letter-spacing: 1px;">Aceitar Tudo</button>
-        </div>
-    </div>
-
     <script>
-        // O banner aparece apenas se não houver decisão guardada na chave 'skyroot_v3'
-        window.addEventListener('DOMContentLoaded', function() {
-            if (!localStorage.getItem('skyroot_v3')) {
-                document.getElementById('cookie-v3').style.display = 'block';
+        function toggleMenu(el) {
+            if(window.innerWidth < 992) {
+                var drop = el.nextElementSibling;
+                var visible = drop.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(d => d.style.display = 'none');
+                drop.style.display = visible ? 'none' : 'block';
             }
-        });
-
-        function aceitarV3() {
-            localStorage.setItem('skyroot_v3', 'aceite');
-            document.getElementById('cookie-v3').style.display = 'none';
-        }
-
-        function fecharV3() {
-            localStorage.setItem('skyroot_v3', 'recusado');
-            document.getElementById('cookie-v3').style.display = 'none';
         }
     </script>
-
 </body>
 </html>
