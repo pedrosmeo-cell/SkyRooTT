@@ -12,15 +12,18 @@
         nav { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; width: 100%; margin: auto; padding: 0 40px; }
         .logo a { font-size: 1.1rem; letter-spacing: 5px; text-transform: uppercase; font-weight: bold; color: #000; text-decoration: none; }
 
+        /* Botão Hambúrguer (Oculto no Computador e Tablet) */
+        .menu-toggle { display: none; background: none; border: none; font-size: 1.3rem; font-weight: bold; cursor: pointer; color: #000; text-transform: uppercase; letter-spacing: 2px; }
+
         .nav-links { display: flex; gap: 5px; list-style: none; margin: 0; padding: 0; flex-grow: 1; justify-content: center; }
         .nav-links li { position: relative; }
         .nav-links li a { text-transform: uppercase; font-size: 0.6rem; letter-spacing: 1.5px; color: #000; text-decoration: none; padding: 10px 12px; display: inline-block; transition: 0.3s; }
 
-        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background: #fff; min-width: 160px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid #eee; padding: 10px 0; }
+        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background: #fff; min-width: 160px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid #eee; padding: 10px 0; z-index: 100000; }
         .dropdown-content a { color: #000 !important; padding: 10px 20px !important; font-size: 0.55rem !important; display: block !important; text-transform: uppercase !important; letter-spacing: 1px !important; text-decoration: none; }
 
-        /* Dropdown por hover ativo apenas em ecrãs grandes de computador */
-        @media (min-width: 992px) {
+        /* Comportamento de Hover dinâmico em ecrãs de Computador Grande */
+        @media (min-width: 1201px) {
             .nav-links li:hover .dropdown-content { display: block; }
         }
 
@@ -33,30 +36,52 @@
         .footer-links a { text-transform: uppercase; font-size: 0.5rem; letter-spacing: 2px; color: #000; text-decoration: none; font-weight: 600; }
         .copyright { font-size: 0.5rem; letter-spacing: 4px; color: #000; text-transform: uppercase; margin: 0; }
 
-        /* --- ARRUMAÇÃO DO ESPAÇO PARA ECRÃS REDUZIDOS / TABLETS --- */
-        @media (max-width: 991px) and (min-width: 768px) {
+        /* --- COMPUTADOR REDUZIDO / JANELA ENCOLHIDA / TABLETS --- */
+        @media (max-width: 1200px) and (min-width: 768px) {
             header { height: auto; padding: 15px 0; }
-            nav { flex-direction: column; gap: 15px; padding: 0 30px; }
+            nav { flex-direction: column; gap: 15px; padding: 0 20px; }
             .nav-links {
-                display: grid !important;
-                grid-template-columns: repeat(4, 1fr) !important; /* Organiza em 4 colunas compactas */
+                display: flex !important;
+                flex-wrap: wrap !important;
+                justify-content: center !important;
                 width: 100%;
                 gap: 10px !important;
             }
-            .nav-links li a { font-size: 0.55rem; padding: 6px; text-align: center; display: block; }
+            .nav-links li a { font-size: 0.55rem; padding: 8px 10px; text-align: center; }
             .nav-right { width: 100%; justify-content: center; border-top: 1px solid #eee; padding-top: 10px; }
+
+            /* Garante o posicionamento correto do menu suspenso em ecrãs encolhidos */
+            .dropdown-content { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 1px solid #ddd; }
         }
 
-        /* --- ADAPTAÇÃO EXCLUSIVA PARA TELEMÓVEIS --- */
+        /* --- ADAPTAÇÃO TOTAL PARA TELEMÓVEIS --- */
         @media (max-width: 767px) {
-            header { height: auto; padding: 20px 0; }
-            nav { flex-direction: column; gap: 20px; padding: 0 20px; }
-            .nav-links { flex-direction: column; width: 100%; text-align: center; gap: 8px; }
+            header { height: 80px; padding: 0; }
+            nav { flex-direction: row; justify-content: space-between; padding: 0 20px; height: 100%; position: relative; }
+
+            .menu-toggle { display: block; }
+            .nav-right { display: none !important; }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                gap: 0;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                background: #fff;
+                border-bottom: 1px solid #000;
+                padding: 10px 0;
+            }
+
+            .nav-links.active { display: flex; }
             .nav-links li { width: 100%; }
-            .nav-links li a { padding: 8px 0; font-size: 0.7rem; width: 100%; display: block; }
-            .dropdown-content { position: static; display: none; box-shadow: none; border: none; border-top: 1px dashed #eee; padding: 5px 0; background: #fafafa; }
-            .nav-right { width: 100%; justify-content: center; border-top: 1px solid #eee; padding-top: 15px; }
-            #local-weather { border-left: none; padding-left: 0; }
+            .nav-links li a { padding: 15px 0; font-size: 0.75rem; width: 100%; display: block; border-bottom: 1px solid #f9f9f9; box-sizing: border-box; }
+
+            .dropdown-content { position: static; display: none; box-shadow: none; border: none; background: #fafafa; padding: 0; transform: none; left: 0; }
+            .dropdown-content a { font-size: 0.65rem !important; padding: 12px 0 !important; border-bottom: 1px solid #eee; }
             .footer-links { flex-wrap: wrap; gap: 20px; padding: 0 20px; }
         }
     </style>
@@ -67,12 +92,14 @@
         <nav>
             <div class="logo"><a href="/">SKYROOT</a></div>
 
-            <ul class="nav-links">
+            <button class="menu-toggle" onclick="toggleNav()">Menu ☰</button>
+
+            <ul class="nav-links" id="menuList">
                 <li><a href="/">Home</a></li>
 
                 <!-- AMAZON GLOBAL -->
                 <li>
-                    <a href="javascript:void(0)" onclick="toggleMenu(this)">Amazon Global ▾</a>
+                    <a href="javascript:void(0)" onclick="toggleSubMenu(this)">Amazon Global ▾</a>
                     <div class="dropdown-content">
                         <a href="/produtos/amazon">Ver Tudo</a>
                         <a href="/produtos/amazon?cat=Mesa">Mesas</a>
@@ -82,7 +109,7 @@
 
                 <!-- ALIEXPRESS (PT/ES) -->
                 <li>
-                    <a href="javascript:void(0)" onclick="toggleMenu(this)">AliExpress (PT/ES) ▾</a>
+                    <a href="javascript:void(0)" onclick="toggleSubMenu(this)">AliExpress (PT/ES) ▾</a>
                     <div class="dropdown-content">
                         <a href="/produtos/aliexpress-pt-es">Ver Tudo</a>
                         <a href="/produtos/aliexpress-pt-es?cat=Mesa">Mesas</a>
@@ -92,7 +119,7 @@
 
                 <!-- ALIEXPRESS (BR) -->
                 <li>
-                    <a href="javascript:void(0)" onclick="toggleMenu(this)">AliExpress (BR) ▾</a>
+                    <a href="javascript:void(0)" onclick="toggleSubMenu(this)">AliExpress (BR) ▾</a>
                     <div class="dropdown-content">
                         <a href="/produtos/aliexpress-br">Ver Tudo</a>
                         <a href="/produtos/aliexpress-br?cat=Mesa">Mesas</a>
@@ -103,7 +130,7 @@
                 <!-- EBAY -->
                 {% for region in ['PT', 'ES', 'BR'] %}
                 <li>
-                    <a href="javascript:void(0)" onclick="toggleMenu(this)">eBay ({{ region }}) ▾</a>
+                    <a href="javascript:void(0)" onclick="toggleSubMenu(this)">eBay ({{ region }}) ▾</a>
                     <div class="dropdown-content">
                         <a href="/produtos/ebay-{{ region|lower }}">Ver Tudo</a>
                         <a href="/produtos/ebay-{{ region|lower }}?cat=Mesa">Mesas</a>
@@ -139,12 +166,35 @@
     </footer>
 
     <script>
-        function toggleMenu(el) {
-            if(window.innerWidth < 992) {
+        // Gere a abertura do menu principal em telemóveis
+        function toggleNav() {
+            var menu = document.getElementById('menuList');
+            menu.classList.toggle('active');
+        }
+
+        // Sistema unificado de cliques táteis e janelas reduzidas abaixo de 1200px
+        function toggleSubMenu(el) {
+            if (window.innerWidth <= 1200) {
                 var drop = el.nextElementSibling;
-                var visible = drop.style.display === 'block';
-                document.querySelectorAll('.dropdown-content').forEach(d => d.style.display = 'none');
-                drop.style.display = visible ? 'none' : 'block';
+                if (drop.style.display === 'block') {
+                    drop.style.display = 'none';
+                } else {
+                    document.querySelectorAll('.dropdown-content').forEach(function(d) {
+                        d.style.display = 'none';
+                    });
+                    drop.style.display = 'block';
+                }
+            }
+        }
+
+        // Fecha os submenus se o utilizador clicar fora deles no ecrã encolhido
+        window.onclick = function(event) {
+            if (!event.target.matches('.nav-links li a')) {
+                document.querySelectorAll('.dropdown-content').forEach(function(d) {
+                    if (window.innerWidth <= 1200) {
+                        d.style.display = 'none';
+                    }
+                });
             }
         }
     </script>
