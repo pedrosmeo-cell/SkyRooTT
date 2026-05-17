@@ -215,6 +215,33 @@
             "image": "AMAZON//B0BLMCLK15.jpg",
             "link": "https://amzn.to/42uyhNG",
             "featured": false
+        },
+        {
+            "affiliate": "Amazon",
+            "name": "naspaluro Cadeira de Escritório com Apoio para os Pés",
+            "price": "-7% 129,99€  Preço recomendado: 139,99 ",
+            "category": "Cadeira",
+            "image": "AMAZON/B0DJGZBFRF.jpg",
+            "link": "https://amzn.to/42B0Qcm",
+            "featured": false
+        },
+        {
+            "affiliate": "Amazon",
+            "name": "Steelcase Leap, cadeira de escritório ergonômica",
+            "price": "979,93€ -22% Preço recomendado: 1 259,48 €",
+            "category": "Cadeira",
+            "image": "AMAZON/B09MMCW4M1.jpg",
+            "link": "https://amzn.to/49Ts1D3",
+            "featured": false
+        },
+        {
+            "affiliate": "Amazon",
+            "name": "SONGMICS Cadeira de Escritório Ergonómica",
+            "price": "81,32€  -6% Preço mediano: 86,40 €",
+            "category": "Cadeira",
+            "image": "AMAZON/B00UTBFWNU.jpg",
+            "link": "https://amzn.to/4tFZhVG",
+            "featured": false
         }
     ]
 }
