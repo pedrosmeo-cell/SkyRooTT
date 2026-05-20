@@ -5,198 +5,220 @@
             "name": "VASAGLE Secretária, mesa de computador",
             "price": "74,29€ ",
             "category": "Mesa",
-            "image": "AMAZON/amazon_vasagel_lLWD104B01.jpg",
+            "image": "AMAZON/49G23CX.jpg",
             "link": "https://amzn.to/49G23CX",
-            "featured": false
+            "featured": false,
+            "id": "f6f504e2-48cb-403b-bb5e-e9f71f0637b3"
         },
         {
             "affiliate": "Amazon",
             "name": "ErGear Secretária elétrica elevável",
             "price": "164,16€",
             "category": "Mesa",
-            "image": "AMAZON/amazon_ErGear_ Mesa_elevavel.jpg",
-            "link": "https://amzn.to/3PdOALB",
-            "featured": false
+            "image": "AMAZON/3PdOALB.jpg",
+            "link": "https://amzn.to/4tPYHom",
+            "featured": false,
+            "id": "3a4f42e2-3ef8-4326-ae61-8ad95c50cb5c"
         },
         {
             "affiliate": "Amazon",
             "name": "ErGear Secretária elétrica",
-            "price": "-13% 132,14€",
+            "price": "-16% 128,07€ recomendado: 152,47 € ",
             "category": "Mesa",
-            "image": "AMAZON/amazon_ErGear_elétrica_ajustavel.jpg",
+            "image": "AMAZON/3PdP2JN.jpg",
             "link": "https://amzn.to/3PdP2JN",
-            "featured": false
+            "featured": false,
+            "id": "96acc621-5b1d-4852-b080-b05101b7822b"
         },
         {
             "affiliate": "Amazon",
             "name": "Coleshome Secretária com gavetas de tecido",
-            "price": "-11% 81,32€",
+            "price": "77,24€  -16% recomendado: 91,48 €",
             "category": "Mesa",
-            "image": "AMAZON/amazon_Coleshome_ Secretária.jpg",
+            "image": "AMAZON/4tnERAA.jpg",
             "link": "https://amzn.to/4tnERAA",
-            "featured": false
+            "featured": false,
+            "id": "8476045c-3910-4bd7-83da-4491e50981f4"
         },
         {
             "affiliate": "Amazon",
             "name": "Coleshome Mesa de jogos com LED",
-            "price": "101,09€",
+            "price": "-27% 111,81€ recomendado: 152,47 €",
             "category": "Mesa",
-            "image": "AMAZON/amazon_Coleshome Mesa de jogos com LED.jpg",
+            "image": "AMAZON/4u92K04.jpg",
             "link": "https://amzn.to/4u92K04",
-            "featured": false
+            "featured": false,
+            "id": "209e787c-db6b-450f-b3da-8105c876d934"
         },
         {
             "affiliate": "Amazon",
             "name": "Coleshome Secretária Gaming com LED",
-            "price": "-10% 96,56€",
+            "price": "108,76€",
             "category": "Mesa",
-            "image": "AMAZON/amazon_Coleshome Secretária Gaming com LED1.jpg",
+            "image": "AMAZON/49FiIXg.jpg",
             "link": "https://amzn.to/49FiIXg",
-            "featured": false
+            "featured": false,
+            "id": "ab145497-a71f-4e88-8109-028c6f579057"
         },
         {
             "affiliate": "Amazon",
             "name": "SONGMICS SONGMICSESecre",
             "price": "142,30€",
             "category": "Mesa",
-            "image": "AMAZON/amazon_SONGMICS SONGMICSESecre.jpg",
+            "image": "AMAZON/3OWeoMp.jpg",
             "link": "https://amzn.to/3OWeoMp",
-            "featured": false
+            "featured": false,
+            "id": "7cc9a1b8-cf32-4214-a029-ad6c723432b9"
         },
         {
             "affiliate": "Amazon",
             "name": "amazon_ODK Mesa de canto com gavetas, 135 × 100",
-            "price": "121,98€",
+            "price": "99,36€  -14% mediano:115,88 €",
             "category": "Mesa",
-            "image": "AMAZON/amazon_ODK Mesa de canto com gavetas, 135 × 100.jpg",
+            "image": "AMAZON/4wkParM.jpg",
             "link": "https://amzn.to/4wkParM",
-            "featured": false
+            "featured": false,
+            "id": "d19b08c2-e918-48d0-a826-dcfe1832ef0a"
         },
         {
             "affiliate": "Amazon",
             "name": "Coleshome Mesa de jogos com prateleiras",
-            "price": "-9% 129,09€",
+            "price": "142,30€ ",
             "category": "Mesa",
-            "image": "AMAZON/amazon_Coleshome Mesa de jogos com prateleiras.jpg",
+            "image": "AMAZON/4ukawnX.jpg",
             "link": "https://amzn.to/4ukawnX",
-            "featured": false
+            "featured": false,
+            "id": "9c8c3bd9-026e-4a79-ae94-99ae51a26e31"
         },
         {
             "affiliate": "Amazon",
             "name": "LVB Secretária de madeira rústica",
-            "price": "172,80€",
+            "price": "203,29€ ",
             "category": "Mesa",
-            "image": "AMAZON/amazon_LVB Secretária de madeira rústica.jpg",
+            "image": "AMAZON/4wlCZLa.jpg",
             "link": "https://amzn.to/4wlCZLa",
-            "featured": false
+            "featured": false,
+            "id": "b0116d74-e9fb-4c77-88ef-a24d1d9cb5c6"
         },
         {
             "affiliate": "Amazon",
             "name": "Cadeira de secretária ergonómica",
-            "price": "91,48€",
+            "price": "86,40€",
             "category": "Cadeira",
-            "image": "AMAZON/amazon_Cadeira de secretária ergonómica.jpg",
+            "image": "AMAZON/3PgFjm1.jpg",
             "link": "https://amzn.to/3PgFjm1",
-            "featured": false
+            "featured": false,
+            "id": "ebcccc13-5f4a-4f59-ac00-165cb80ce14d"
         },
         {
             "affiliate": "Amazon",
             "name": "MELOKEA Cadeira de escritório ergonómica",
             "price": "177,88€ ",
             "category": "Cadeira",
-            "image": "AMAZON/amazon_MELOKEA Cadeira de escritório ergonómica.jpg",
+            "image": "AMAZON/4uyNAkf.jpg",
             "link": "https://amzn.to/4uyNAkf",
-            "featured": false
+            "featured": false,
+            "id": "6eb7aaa3-74af-47b7-ba9c-2acf8ba83b52"
         },
         {
-            "affiliate": "Amazon",
+            "affiliate": "AliExpress-PT-ES",
             "name": "Mesa de jogos Coleshome 120x120 cm",
-            "price": "103,35€ Economize 84,32€  -187,67€",
+            "price": "€ 56,39 Economize €40,83 € 97,22",
             "category": "Mesa",
-            "image": "ALIEXPRESS/Mesa de jogos Coleshome 120x120 cm.jpg",
+            "image": "ALIEXPRESS.PT-ES/1005011984247641.jpg",
             "link": "https://s.click.aliexpress.com/e/_c32MJXfh",
-            "featured": false
+            "featured": false,
+            "id": "b7b0c5a7-3ddb-4cb4-9762-64dbfe02e7a8"
         },
         {
-            "affiliate": "AliExpress",
+            "affiliate": "AliExpress-PT-ES",
             "name": "Cadeira de escritório, cadeira de computador",
             "price": "171,36€ 33% de desconto 255,76€",
             "category": "Cadeira",
-            "image": "ALIEXPRESS/Cadeira de escritório, cadeira de computador.jpg",
+            "image": "ALIEXPRESS.PT-ES/Cadeira de escritório, cadeira de computador.jpg",
             "link": "https://s.click.aliexpress.com/e/_c3SrjooR",
-            "featured": false
+            "featured": false,
+            "id": "21a92724-c6c8-4c0a-9f44-795a3558abd9"
         },
         {
-            "affiliate": "AliExpress",
+            "affiliate": "AliExpress-PT-ES",
             "name": "Cadeira Ergonômica de Couro PU para Jogos",
             "price": "194,78€ Economize 221,12€  - 415,90€",
             "category": "Cadeira",
-            "image": "ALIEXPRESS/Cadeira Ergonômica de Couro PU para Jogos.jpg",
+            "image": "ALIEXPRESS.PT-ES/Cadeira Ergonômica de Couro PU para Jogos.jpg",
             "link": "https://s.click.aliexpress.com/e/_c3aGI5yF",
-            "featured": false
+            "featured": false,
+            "id": "3cd377e1-64a3-415d-ac70-7d0cdd5e3e8c"
         },
         {
-            "affiliate": "AliExpress",
+            "affiliate": "AliExpress-PT-ES",
             "name": "Cadeira de escritório ajustável com encosto alto",
             "price": "171,94€ Economize -655,09€ 827,03€",
             "category": "Cadeira",
-            "image": "ALIEXPRESS/1005011880279197.jpg",
+            "image": "ALIEXPRESS.PT-ES/1005011880279197.jpg",
             "link": "https://s.click.aliexpress.com/e/_c3mE1lY3",
-            "featured": false
+            "featured": false,
+            "id": "50f133b7-fea9-4fca-96a6-5f83c0cbd6cc"
         },
         {
-            "affiliate": "AliExpress",
+            "affiliate": "AliExpress-PT-ES",
             "name": "Cadeira de escritório executiva ergonômica com encosto alto",
             "price": "191,23€ 73% de desconto 708,25€",
             "category": "Cadeira",
-            "image": "ALIEXPRESS/1005010787602140.jpg",
+            "image": "ALIEXPRESS.PT-ES/1005010787602140.jpg",
             "link": "https://s.click.aliexpress.com/e/_c30OWFl9",
-            "featured": false
+            "featured": false,
+            "id": "8bc0c2a1-cdf6-4e25-811f-f9e35b6525a7"
         },
         {
-            "affiliate": "AliExpress",
+            "affiliate": "AliExpress-PT-ES",
             "name": "Cadeira de escritório ergonômica, cadeira gamer em tela ",
             "price": "152,89€ 57% de desconto 357,99€",
             "category": "Cadeira",
-            "image": "ALIEXPRESS/1005011959214109.jpg",
+            "image": "ALIEXPRESS.PT-ES/1005011959214109.jpg",
             "link": "https://s.click.aliexpress.com/e/_c4rI0GoR",
-            "featured": false
+            "featured": false,
+            "id": "e02569ae-b581-492f-b739-3446ec182624"
         },
         {
             "affiliate": "AliExpress-BR",
             "name": "Mesa de escritório elétrica com altura ajustável",
-            "price": "144,15€ Economize -147,63€ 291,78€",
+            "price": "R$ 984,40 Economize R$ 1.757,82",
             "category": "Mesa",
-            "image": "ALIEXPRESS/1005012084373829.jpg",
+            "image": "ALIEXPRESS.BR/1005012084373829.jpg",
             "link": "https://s.click.aliexpress.com/e/_c41D3OFd",
-            "featured": false
+            "featured": false,
+            "id": "4a10def7-588a-4986-a2bd-a8701cf97cf8"
         },
         {
-            "affiliate": "AliExpress",
+            "affiliate": "AliExpress-PT-ES",
             "name": "Mesa de escritório de 100/120 cm",
             "price": "70,87€ Economize -102,03€ 172,90€",
             "category": "Mesa",
-            "image": "ALIEXPRESS/1005012003324765.jpg",
+            "image": "ALIEXPRESS.PT-ES/1005012003324765.jpg",
             "link": "https://s.click.aliexpress.com/e/_c3Xyb3KR",
-            "featured": false
+            "featured": false,
+            "id": "838a4d8c-8a80-40d4-804b-fba86668dc47"
         },
         {
-            "affiliate": "AliExpress",
+            "affiliate": "AliExpress-PT-ES",
             "name": "Mesa de jogos em formato de L",
             "price": "111,72€ Economize -115,21€ 226,93€",
             "category": "Mesa",
-            "image": "ALIEXPRESS/1005011984420550.jpg",
+            "image": "ALIEXPRESS.PT-ES/1005011984420550.jpg",
             "link": "https://s.click.aliexpress.com/e/_c4KC9eZ1",
-            "featured": false
+            "featured": false,
+            "id": "06fba73e-b581-4336-abaa-e310bc6bd377"
         },
         {
-            "affiliate": "AliExpress",
+            "affiliate": "AliExpress-PT-ES",
             "name": "Mesa de computador com 8 gavetas de armazenamento",
             "price": "116,26€ Novos clientes economizam -110,67€ 226,93€",
             "category": "Mesa",
-            "image": "ALIEXPRESS/1005011946391020.jpg",
+            "image": "ALIEXPRESS.PT-ES/1005011946391020.jpg",
             "link": "https://s.click.aliexpress.com/e/_c3LjYDgF",
-            "featured": false
+            "featured": false,
+            "id": "a9643446-dd9c-4556-ab65-58815b76c2c2"
         },
         {
             "affiliate": "Amazon",
@@ -205,7 +227,8 @@
             "category": "Cadeira",
             "image": "AMAZON/B0F1XR5XD9.jpg",
             "link": "https://amzn.to/4wpDILn",
-            "featured": false
+            "featured": false,
+            "id": "47d7523a-ec0c-46c3-ad6b-00fa023f446a"
         },
         {
             "affiliate": "Amazon",
@@ -214,7 +237,8 @@
             "category": "Cadeira",
             "image": "AMAZON//B0BLMCLK15.jpg",
             "link": "https://amzn.to/42uyhNG",
-            "featured": false
+            "featured": false,
+            "id": "3745456a-a7bf-4a22-ba65-733c33ee4054"
         },
         {
             "affiliate": "Amazon",
@@ -223,7 +247,8 @@
             "category": "Cadeira",
             "image": "AMAZON/B0DJGZBFRF.jpg",
             "link": "https://amzn.to/42B0Qcm",
-            "featured": false
+            "featured": false,
+            "id": "e3ae2a89-3081-43f2-9726-1310c367e2fc"
         },
         {
             "affiliate": "Amazon",
@@ -232,7 +257,8 @@
             "category": "Cadeira",
             "image": "AMAZON/B09MMCW4M1.jpg",
             "link": "https://amzn.to/49Ts1D3",
-            "featured": false
+            "featured": false,
+            "id": "47f3bea6-373b-48b6-8f91-530779df207d"
         },
         {
             "affiliate": "Amazon",
@@ -241,7 +267,109 @@
             "category": "Cadeira",
             "image": "AMAZON/B00UTBFWNU.jpg",
             "link": "https://amzn.to/4tFZhVG",
+            "featured": false,
+            "id": "ca54f2cb-2c59-47b0-a2ea-4914b7bfc6d5"
+        },
+        {
+            "id": "d901f8cc-f8af-4072-a2f5-1dbb15e7e797",
+            "affiliate": "AliExpress-BR",
+            "name": "Mesa de escritório executiva branca moderna, mesa de computador de madeira",
+            "price": "R$ 7.843,78 Poupe R$ 8.497,43 R$ 16.341,2",
+            "category": "Mesa",
+            "image": "ALIEXPRESS.BR/1005010291890652.jpg",
+            "link": "https://s.click.aliexpress.com/e/_c3to0Y1T",
+            "featured": false
+        },
+        {
+            "id": "598951b0-93f5-44c5-bb1d-7c76eb832449",
+            "affiliate": "AliExpress-BR",
+            "name": "Mesa de computador na cama, mesa de computador de mesa, mesa de cabeceira, mesa elevatória",
+            "price": "R$ 7.993,96 15% de desconto R$ 9.404,66",
+            "category": "Mesa",
+            "image": "ALIEXPRESS.BR/1005008833703150.jpg",
+            "link": "https://s.click.aliexpress.com/e/_c3W1Qfkz",
+            "featured": false
+        },
+        {
+            "id": "4f26bb5e-6988-44c6-931e-0f193b9e93c8",
+            "affiliate": "AliExpress-BR",
+            "name": "Mesa de computador dobrável com altura ajustáve",
+            "price": "R$ 96,39 Economize R$ 47,48",
+            "category": "Mesa",
+            "image": "ALIEXPRESS.BR/1005010282869083.jpg",
+            "link": "https://s.click.aliexpress.com/e/_c4e5yrk9",
+            "featured": false
+        },
+        {
+            "id": "08080877-2415-4af1-9976-3bd667b25eb6",
+            "affiliate": "AliExpress-BR",
+            "name": "Mesa de escritório moderna de madeira com ajuste elétrico de altura, compartimentos removíveis e organizador de mesa",
+            "price": "R$ 16.312,65 50% de desconto R$ 32.625,31",
+            "category": "Mesa",
+            "image": "ALIEXPRESS.BR/1005010246602076.jpg",
+            "link": "https://s.click.aliexpress.com/e/_c4e5yrk9",
+            "featured": false
+        },
+        {
+            "id": "625076b2-8ff4-4902-a235-b463d73d9f8b",
+            "affiliate": "AliExpress-PT-ES",
+            "name": "Escritorio de oficina de madera moderno, elevador eléctrico",
+            "price": "1.267,69€ -50% dto.2.535,38€",
+            "category": "Mesa",
+            "image": "ALIEXPRESS.PT-ES/1005010246602076.jpg",
+            "link": "https://s.click.aliexpress.com/e/_c4pahtRT",
+            "featured": false
+        },
+        {
+            "id": "006a245d-95c4-4b43-9472-35fc8f42bf33",
+            "affiliate": "AliExpress-BR",
+            "name": "Cadeira de escritório extensível ergonômica, bege, com deslizadores, estética kawaii, confortável e com preço acessível",
+            "price": "R$ 2.181,96 Economize R$ 2.363,78",
+            "category": "Cadeira",
+            "image": "ALIEXPRESS.BR/1005008155259925.jpg",
+            "link": "https://s.click.aliexpress.com/e/_c3TfMNfL",
+            "featured": false
+        },
+        {
+            "id": "b7b51915-1daa-414a-8f47-632b0e9855bd",
+            "affiliate": "AliExpress-BR",
+            "name": "Cadeira ergonômica para escritório em casa, cadeira de mesa confortável para estudantes",
+            "price": "R$ 1.682,99 Economize R$ 1.897,84",
+            "category": "Cadeira",
+            "image": "ALIEXPRESS.BR/1005010472685967.jpg",
+            "link": "https://s.click.aliexpress.com/e/_c2xLGpuz",
+            "featured": false
+        },
+        {
+            "id": "e96f2d2a-40f5-4ddf-b976-816cafa60e48",
+            "affiliate": "AliExpress-BR",
+            "name": "Cadeiras de escritório luxuosas e confortáveis, em couro, giratórias e relaxantes, com design italiano. ",
+            "price": "R$ 4.452,84 Economize R$ 5.021,28",
+            "category": "Cadeira",
+            "image": "ALIEXPRESS.BR/1005009931812410.jpg",
+            "link": "https://s.click.aliexpress.com/e/_c4srhpNn",
+            "featured": false
+        },
+        {
+            "id": "bc61e989-8d93-4ad0-8000-e78f391c406b",
+            "affiliate": "AliExpress-BR",
+            "name": "Cadeiras de escritório ergonômicas modernas, giratórias, ajustáveis ​​e confortáveis ​​para computador",
+            "price": "R$ 3.512,99 Economize R$ 3.961,46",
+            "category": "Cadeira",
+            "image": "ALIEXPRESS.BR/1005009135675825.jpg",
+            "link": "https://s.click.aliexpress.com/e/_c3Fpu1XF",
+            "featured": false
+        },
+        {
+            "id": "acd43029-3f75-40be-a4fb-694355d37203",
+            "affiliate": "AliExpress-BR",
+            "name": "Cadeira de escritório ergonômica com ajuste de altura e suporte lombar, cadeira gamer",
+            "price": "R$ 6.037,99 50% de descontoR$ 12.075,98",
+            "category": "Cadeira",
+            "image": "ALIEXPRESS.BR/1005008917711397.jpg",
+            "link": "https://s.click.aliexpress.com/e/_c4OVtyFn",
             "featured": false
         }
     ]
 }
+

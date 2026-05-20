@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <!-- BANNER DE COOKIES EM CONFORMIDADE COM O RGPD (ACEITAR / REJEITAR) -->
+    <!-- BANNER DE COOKIES EM CONFORMIDADE COM O RGPD -->
     <div id="cookie-banner">
         <p>Utilizamos cookies próprios e de terceiros para lhe oferecer publicidade baseada nos seus interesses e analisar métricas. Veja o nosso <a href="/privacidade" style="color: #fff; text-decoration: underline;">Aviso de Cookies</a> para mais detalhes.</p>
         <div class="cookie-buttons">
@@ -17,14 +17,21 @@
         </div>
     </div>
 
-    <header>
-        <nav>
+    <header style="height: auto; padding: 15px 0;">
+        <nav style="display: flex; justify-content: space-between; align-items: center; max-width: 1400px; width: 100%; margin: auto; padding: 0 40px; box-sizing: border-box;">
+
+            <!-- LOGÓTIPO COM LEGENDA CURTA E TIPOGRAFIA DISTINTA -->
             <div class="logo">
-                <a href="/">
-                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="SkyRoot Logo" onerror="this.src='{{ url_for('static', filename='images/logo.jpg') }}'; this.onerror=null;">
-                    <span>SKYROOT</span>
+                <a href="/" style="display: flex; align-items: center; gap: 15px; text-decoration: none; color: #000;">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="SkyRoot Logo" onerror="this.src='{{ url_for('static', filename='images/logo.jpg') }}'; this.onerror=null;" style="height: 45px; width: auto; object-fit: contain;">
+                    <div style="display: flex; flex-direction: column;">
+                        <span style="font-size: 1.3rem; letter-spacing: 5px; text-transform: uppercase; font-weight: bold; line-height: 1;">SKYROOT</span>
+                        <!-- LEGENDA DESIGNER: Letras espaçadas e elegantes de alta gama -->
+                        <small style="font-size: 0.52rem; letter-spacing: 3px; text-transform: uppercase; color: #7f8c8d; margin-top: 5px; font-weight: 500; font-family: 'Inter', sans-serif;">OFFICE SOLUTIONS</small>
+                    </div>
                 </a>
             </div>
+
             <button class="menu-toggle" onclick="toggleNav()">Menu ☰</button>
 
             <ul class="nav-links" id="menuList">
@@ -109,9 +116,7 @@
             }
         }
 
-        // --- LÓGICA DE VERIFICAÇÃO ATUALIZADA ---
         document.addEventListener("DOMContentLoaded", function() {
-            // Se o utilizador já respondeu (rejeitou ou aceitou), o banner não reaparece
             if (!localStorage.getItem("cookieDecision")) {
                 var banner = document.getElementById("cookie-banner");
                 if (banner) {
@@ -121,7 +126,7 @@
         });
 
         function setCookieConsent(status) {
-            localStorage.setItem("cookieDecision", status); // Grava 'accepted' ou 'rejected'
+            localStorage.setItem("cookieDecision", status);
             var banner = document.getElementById("cookie-banner");
             if (banner) {
                 banner.style.display = "none";

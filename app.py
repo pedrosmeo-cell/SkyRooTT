@@ -1,10 +1,18 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 import json
 import os
+import uuid
 from config import Config
 
 app = Flask(__name__)
 app.config.from_object(Config)
+
+# dicionário de conversão: mapeia o slug da URL para o nome exato no seu JSON
+STORES_MAP = {
+    'amazon': 'Amazon',
+    'aliexpress-pt-es': 'AliExpress-PT-ES',
+    'aliexpress-br': 'AliExpress-BR'
+}
 
 
 # --- FUNÇÕES DE DADOS ---
@@ -15,9 +23,20 @@ def load_data():
             json.dump({"products": []}, f)
     with open(app.config['DATA_FILE'], 'r', encoding='utf-8') as f:
         try:
-            return json.load(f)
+            data = json.load(f)
         except:
-            return {"products": []}
+            data = {"products": []}
+
+    # Migração automática: Garante que produtos antigos recebem um ID único fixo
+    updated = False
+    for p in data.get('products', []):
+        if 'id' not in p:
+            p['id'] = str(uuid.uuid4())
+            updated = True
+    if updated:
+        save_data(data)
+
+    return data
 
 
 def save_data(data):
@@ -29,6 +48,8 @@ def save_data(data):
 @app.template_filter('slugify')
 def slugify_filter(s):
     if not s: return ""
+    # Remove parêntesis e barras para bater certo com as âncoras do dashboard
+    s = s.replace("(", "").replace(")", "").replace("/", "-")
     return s.lower().replace(" ", "-").replace("&", "")
 
 
@@ -45,11 +66,24 @@ def index():
 def produtos(store_name):
     data = load_data()
     all_products = data.get('products', [])
-    store_products = [p for p in all_products if p.get('affiliate', '').strip().lower() == store_name.strip().lower()]
+
+    slug = store_name.strip().lower()
+
+    # Se a loja não existir no mapa, mostra página vazia com segurança
+    if slug not in STORES_MAP:
+        return render_template('produtos.html', products=[], category=store_name.upper())
+
+    # target_brand assume o nome correto (ex: 'AliExpress-PT-ES')
+    target_brand = STORES_MAP[slug]
+
+    # Filtragem precisa respeitando maiúsculas e minúsculas do arquivo JSON
+    store_products = [p for p in all_products if p.get('affiliate') == target_brand]
+
     cat_filter = request.args.get('cat')
     if cat_filter:
         store_products = [p for p in store_products if p.get('category') == cat_filter]
-    return render_template('produtos.html', products=store_products, category=store_name.upper())
+
+    return render_template('produtos.html', products=store_products, category=target_brand.upper().replace("-", " "))
 
 
 @app.route('/admin', methods=['GET', 'POST'])
@@ -64,6 +98,7 @@ def admin():
 
     if request.method == 'POST':
         new_product = {
+            "id": str(uuid.uuid4()),  # Criação da matrícula única do produto
             "affiliate": request.form.get('affiliate'),
             "name": request.form.get('name'),
             "price": request.form.get('price'),
@@ -85,59 +120,64 @@ def dashboard():
     data = load_data()
     all_products = data.get('products', [])
     stores_data = {}
-    for index, p in enumerate(all_products):
+
+    for p in all_products:
         brand = p.get('affiliate') or 'Outros'
         cat = p.get('category') or 'Geral'
         if brand not in stores_data: stores_data[brand] = {}
         if cat not in stores_data[brand]: stores_data[brand][cat] = []
-        p['original_index'] = index
         stores_data[brand][cat].append(p)
+
     return render_template('dashboard.html', stores_data=stores_data)
 
 
-# --- NOVA ROTA DE EDIÇÃO (ADICIONADA AQUI) ---
-@app.route('/edit/<int:product_id>', methods=['GET', 'POST'])
+@app.route('/edit/<product_id>', methods=['GET', 'POST'])
 def edit_product(product_id):
     if not session.get('logged_in'): return redirect(url_for('admin'))
 
     data = load_data()
-    if product_id < 0 or product_id >= len(data['products']):
+    product = next((p for p in data['products'] if p.get('id') == product_id), None)
+
+    if not product:
         return redirect(url_for('dashboard'))
 
     if request.method == 'POST':
-        data['products'][product_id] = {
-            "affiliate": request.form.get('affiliate'),
-            "name": request.form.get('name'),
-            "price": request.form.get('price'),
-            "category": request.form.get('category'),
-            "image": request.form.get('image_url'),
-            "link": request.form.get('link'),
-            "featured": True if request.form.get('featured') == 'yes' else False
-        }
+        product["affiliate"] = request.form.get('affiliate')
+        product["name"] = request.form.get('name')
+        product["price"] = request.form.get('price')
+        product["category"] = request.form.get('category')
+        product["image"] = request.form.get('image_url')
+        product["link"] = request.form.get('link')
+        product["featured"] = True if request.form.get('featured') == 'yes' else False
+
         save_data(data)
         return redirect(url_for('dashboard'))
 
-    product = data['products'][product_id]
     return render_template('edit.html', p=product, product_id=product_id)
 
 
-@app.route('/delete/<int:product_id>')
+# Rota sincronizada para evitar o erro BuildError do dashboard.html
+@app.route('/delete_product/<product_id>')
 def delete_product(product_id):
     if not session.get('logged_in'): return redirect(url_for('admin'))
     data = load_data()
-    if 0 <= product_id < len(data['products']):
-        data['products'].pop(product_id)
-        save_data(data)
+
+    # Filtra mantendo apenas os produtos que NÃO têm o ID selecionado
+    data['products'] = [p for p in data['products'] if p.get('id') != product_id]
+    save_data(data)
     return redirect(url_for('dashboard'))
 
 
-@app.route('/toggle_featured/<int:product_id>')
+@app.route('/toggle_featured/<product_id>')
 def toggle_featured(product_id):
     if not session.get('logged_in'): return redirect(url_for('admin'))
     data = load_data()
-    if 0 <= product_id < len(data['products']):
-        data['products'][product_id]['featured'] = not data['products'][product_id].get('featured', False)
+
+    product = next((p for p in data['products'] if p.get('id') == product_id), None)
+    if product:
+        product['featured'] = not product.get('featured', False)
         save_data(data)
+
     return redirect(url_for('dashboard'))
 
 
@@ -145,10 +185,6 @@ def toggle_featured(product_id):
 def logout():
     session.clear()
     return redirect(url_for('index'))
-
-
-@app.route('/clima')
-def clima(): return render_template('clima.html')
 
 
 @app.route('/guia')
