@@ -21,7 +21,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 9999;
-    height: 80px;
+    height: 95px;
     display: flex;
     align-items: center;
 }
@@ -46,7 +46,7 @@ nav {
 }
 
 .logo a img {
-    height: 35px;
+    height: 45px;
     width: auto;
     object-fit: contain;
 }

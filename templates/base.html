@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkyRoot | Executive Office Solutions</title>
+    <title>SkyRoot Workspace</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
@@ -17,17 +17,16 @@
         </div>
     </div>
 
-    <header style="height: auto; padding: 15px 0;">
-        <nav style="display: flex; justify-content: space-between; align-items: center; max-width: 1400px; width: 100%; margin: auto; padding: 0 40px; box-sizing: border-box;">
+    <header>
+        <nav>
 
-            <!-- LOGÓTIPO COM LEGENDA CURTA E TIPOGRAFIA DISTINTA -->
+            <!-- LOGÓTIPO ATUALIZADO PARA SKYROOT WORKSPACE -->
             <div class="logo">
-                <a href="/" style="display: flex; align-items: center; gap: 15px; text-decoration: none; color: #000;">
-                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="SkyRoot Logo" onerror="this.src='{{ url_for('static', filename='images/logo.jpg') }}'; this.onerror=null;" style="height: 45px; width: auto; object-fit: contain;">
+                <a href="/">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="SkyRoot Logo" onerror="this.src='{{ url_for('static', filename='images/logo.jpg') }}'; this.onerror=null;">
                     <div style="display: flex; flex-direction: column;">
-                        <span style="font-size: 1.3rem; letter-spacing: 5px; text-transform: uppercase; font-weight: bold; line-height: 1;">SKYROOT</span>
-                        <!-- LEGENDA DESIGNER: Letras espaçadas e elegantes de alta gama -->
-                        <small style="font-size: 0.52rem; letter-spacing: 3px; text-transform: uppercase; color: #7f8c8d; margin-top: 5px; font-weight: 500; font-family: 'Inter', sans-serif;">OFFICE SOLUTIONS</small>
+                        <span>SKYROOT Workspace</span>
+                        <small style="text-transform: uppercase !important; color: #7f8c8d !important; letter-spacing: 3px !important; font-size: 0.52rem !important; display: block !important;">OFFICE SOLUTIONS</small>
                     </div>
                 </a>
             </div>
@@ -85,7 +84,7 @@
             <a href="/guia">Guia</a>
             <a href="/litigios">Litígios</a>
         </div>
-        <p class="copyright">&copy; 2026 SKYROOT GLOBAL ASSETS</p>
+        <p class="copyright">&copy; 2026 SKYROOT Workspace</p>
     </footer>
 
     <script>
