@@ -7,7 +7,7 @@ from config import Config
 app = Flask(__name__)
 app.config.from_object(Config)
 
-# dicionário de conversão: UNIFICADO exatamente igual ao site de ferramentas
+# dicionário de conversão: ATUALIZADO com as tuas 4 novas lojas unificadas
 STORES_MAP = {
     'amazon': 'Amazon Global',
     'amazon-br': 'Amazon Brasil',
@@ -74,7 +74,7 @@ def produtos(store_name):
     if slug not in STORES_MAP:
         return render_template('produtos.html', products=[], category=store_name.upper())
 
-    # target_brand assume o nome correto unificado (ex: 'AliExpress Global')
+    # target_brand assume o nome correto (ex: 'AliExpress Global')
     target_brand = STORES_MAP[slug]
 
     # Filtragem precisa respeitando maiúsculas e minúsculas do arquivo JSON
