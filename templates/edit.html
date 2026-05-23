@@ -7,16 +7,13 @@
         <form action="/edit/{{ product_id }}" method="POST">
             <div class="edit-grid">
 
-                <!-- LOJA -->
+                <!-- LOJA (NOMES 100% IGUAIS AO ADMINISTRADOR) -->
                 <div class="form-group">
                     <label class="form-label">LOJA:</label>
                     <select name="affiliate" class="form-control">
-                        {% for store in ['Amazon', 'AliExpress-PT-ES', 'AliExpress-BR'] %}
+                        {% for store in ['Amazon Global', 'Amazon Brasil', 'AliExpress Global', 'AliExpress Brasil'] %}
                         <option value="{{ store }}" {% if p.affiliate == store %}selected{% endif %}>
-                            {% if store == 'Amazon' %}Amazon Global
-                            {% elif store == 'AliExpress-PT-ES' %}AliExpress (PT/ES)
-                            {% elif store == 'AliExpress-BR' %}AliExpress (BR)
-                            {% endif %}
+                            {{ store }}
                         </option>
                         {% endfor %}
                     </select>
@@ -31,10 +28,10 @@
                 <!-- PREÇO -->
                 <div class="form-group">
                     <label class="form-label">PREÇO:</label>
-                    <input type="text" name="price" value="{{ p.price }}" placeholder="0.00€" class="form-control">
+                    <input type="text" name="price" value="{{ p.price }}" placeholder="0.00€ ou R$ 0,00" class="form-control">
                 </div>
 
-                <!-- CATEGORIA -->
+                <!-- CATEGORIA ATUALIZADA PARA ESCRITÓRIO -->
                 <div class="form-group">
                     <label class="form-label">CATEGORIA:</label>
                     <select name="category" class="form-control">
