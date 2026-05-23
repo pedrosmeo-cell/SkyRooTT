@@ -1,27 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 
-<!-- ZONA DE IMPACTO (MOSAICO PRINCIPAL COM FUNDO ATUALIZADO PARA HOME5) -->
-<div class="home-hero-wrapper" style="background-image: url('/static/images/home5.jpg') !important;">
+<!-- ZONA DE IMPACTO (MOSAICO PRINCIPAL) -->
+<div class="home-hero-wrapper">
     <div class="hero-overlay"></div>
     <div class="hero-content">
 
         <!-- MOSAICO DE IMAGENS -->
         <div class="mosaic-wrapper">
             <div class="mosaic-container">
-                <!-- Caixa Grande da Esquerda (home3.jpg) -->
                 <div class="mosaic-item main-item">
-                    <img src="{{ url_for('static', filename='images/home3.jpg') }}" alt="Ferramentas Profissionais 1">
+                    <img src="{{ url_for('static', filename='images/Hiscritorio1.jpg') }}" alt="Escritório Executivo 1">
                 </div>
-
                 <div class="mosaic-subgrid">
-                    <!-- Caixa Pequena Superior Direita (home1.jpg) -->
                     <div class="mosaic-item">
-                        <img src="{{ url_for('static', filename='images/home1.jpg') }}" alt="Ferramentas Profissionais 2">
+                        <img src="{{ url_for('static', filename='images/Hiscritorio2.jpg') }}" alt="Escritório Executivo 2">
                     </div>
-                    <!-- Caixa Pequena Inferior Direita (home4.jpg) -->
                     <div class="mosaic-item">
-                        <img src="{{ url_for('static', filename='images/home4.jpg') }}" alt="Ferramentas Profissionais 3">
+                        <img src="{{ url_for('static', filename='images/Hiscritorio3.jpg') }}" alt="Escritório Executivo 3">
                     </div>
                 </div>
             </div>
@@ -40,11 +36,11 @@
                 {% set parceiros = [
                     {'name': 'Amazon Global', 'url': 'https://amzn.to'},
                     {'name': 'AliExpress (PT/ES)', 'url': 'https://aliexpress.com'},
-                    {'name': 'AliExpress (BR)', 'url': 'https://aliexpress.com'}
+                    {'name': 'AliExpress (BR)', 'url': 'https://s.click.aliexpress.com/e/_c3ffNQ8h'}
                 ] %}
                 {% for loja in parceiros %}
                 <a href="{{ loja.url }}" target="_blank" rel="nofollow noopener noreferrer" class="partner-btn">
-                    {{ loja.name }} 2026 ↗
+                    {{ loja.name }} ↗
                 </a>
                 {% endfor %}
             </div>
@@ -54,48 +50,43 @@
     </div>
 </div>
 
-<!-- SECÇÃO: HUB DE PLATAFORMAS (FORMATO LISTA DE LINKS DIRETOS) -->
+<!-- SECÇÃO: PORTFÓLIO DE PROJETOS -->
 <section class="highlights-section">
 
     <div class="section-title-wrapper">
-        <h2 class="section-title">| SKYROOT HUB: REDE DE PLATAFORMAS</h2>
+        <h2 class="section-title">| SKYROOT HUB: PORTFÓLIO DE PROJETOS</h2>
         <div class="section-title-line"></div>
     </div>
 
-    <!-- PAINEL ORGANIZADO PARA MOSTRAR OS LINKS EXPLICITAMENTE -->
-    <div style="max-width: 1000px; margin: 0 auto; background: #fff; border: 1px solid #eee; padding: 40px; box-sizing: border-box; border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.02);">
+    <!-- LISTA DE PORTAIS ORGANIZADA COM BOTÕES DIRETO -->
+    <div style="max-width: 1000px; margin: 0 auto; background: #fff; border: 1px solid #eee; padding: 40px; box-sizing: border-box; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
 
         <p style="font-size: 0.85rem; color: #666; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px;">Aceda aos portais oficiais da nossa rede global de ativos:</p>
 
-        <div style="display: flex; flex-direction: column; gap: 20px;">
-
-            <!-- LINK 1: NOME UNIFICADO E TEXTO EXPLICATIVO AJUSTADO -->
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f5f5f5; padding-bottom: 20px; flex-wrap: wrap; gap: 15px;">
-                <div>
-                    <!-- Alterado para o nome que vais retificar no outro site -->
-                    <h3 style="margin: 0; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold;">SkyRoot Workspace</h3>
-                    <!-- Descrição focada no nicho do site de destino -->
-                    <p style="margin: 5px 0 0 0; font-size: 0.75rem; color: #888;">Curadoria especializada em Mesas de Escritório, Cadeiras Ergonómicas e Setups Corporativos.</p>
-                    <span style="font-size: 0.7rem; color: #3498db; font-family: monospace; display: block; margin-top: 5px;">https://skyroott.onrender.com/</span>
-                </div>
-                <a href="https://skyroott.onrender.com/" target="_blank" rel="noopener noreferrer" style="background: #000; color: #fff; text-decoration: none; font-size: 0.65rem; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; padding: 12px 25px; border-radius: 2px; transition: 0.3s;" onmouseover="this.style.background='#3498db';" onmouseout="this.style.background='#000';">
-                    Visitar Site ↗
-                </a>
+        <!-- LINK 1: SKYROOT WORKSPACE (ATUALIZADO) -->
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f5f5f5; padding-bottom: 20px; flex-wrap: wrap; gap: 15px;">
+            <div>
+                <h3 style="margin: 0; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold;">SKYROOT Tools | OFFICE SOLUTIONS</h3>
+                <p style="margin: 5px 0 0 0; font-size: 0.75rem; color: #888;">Curadoria especializada em Mesas de Escritório, Cadeiras Ergonómicas e Setups Corporativos.</p>
+                <span style="font-size: 0.7rem; color: #3498db; font-family: monospace; display: block; margin-top: 5px;">https://skyroot-tools.onrender.com/</span>
             </div>
-
-            <!-- LINK 2: ESPAÇO RESERVADO PARA O TEU PRÓXIMO SITE -->
-            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 10px; flex-wrap: wrap; gap: 15px; opacity: 0.5;">
-                <div>
-                    <h3 style="margin: 0; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; color: #999;">Tech & Gadgets Hub</h3>
-                    <p style="margin: 5px 0 0 0; font-size: 0.75rem; color: #bbb;">Análise e recomendação de dispositivos tecnológicos e automação.</p>
-                    <span style="font-size: 0.7rem; color: #bbb; font-family: monospace; display: block; margin-top: 5px;">Brevemente disponível...</span>
-                </div>
-                <button disabled style="background: #eee; color: #999; border: 1px solid #ddd; font-size: 0.65rem; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; padding: 12px 25px; border-radius: 2px; cursor: not-allowed;">
-                    Em Espera
-                </button>
-            </div>
-
+            <a href="https://skyroot-tools.onrender.com/" target="_blank" rel="noopener noreferrer" style="background: #000; color: #fff; text-decoration: none; font-size: 0.65rem; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; padding: 12px 25px; border-radius: 2px; transition: 0.3s;" onmouseover="this.style.background='#3498db';" onmouseout="this.style.background='#000';">
+                Visitar Site ↗
+            </a>
         </div>
+
+        <!-- LINK 2: TECH & GADGETS HUB -->
+        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 20px; flex-wrap: wrap; gap: 15px; opacity: 0.5;">
+            <div>
+                <h3 style="margin: 0; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; color: #999;">Tech & Gadgets Hub</h3>
+                <p style="margin: 5px 0 0 0; font-size: 0.75rem; color: #bbb;">Análise e recomendação de dispositivos tecnológicos e automação.</p>
+                <span style="font-size: 0.7rem; color: #bbb; font-family: monospace; display: block; margin-top: 5px;">Brevemente disponível...</span>
+            </div>
+            <button disabled style="background: #eee; color: #999; border: 1px solid #ddd; font-size: 0.65rem; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; padding: 12px 25px; border-radius: 2px; cursor: not-allowed;">
+                Em Espera
+            </button>
+        </div>
+
     </div>
 </section>
 {% endblock %}
