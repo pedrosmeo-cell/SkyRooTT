@@ -7,7 +7,7 @@ from config import Config
 app = Flask(__name__)
 app.config.from_object(Config)
 
-# dicionário de conversão: UNIFICADO exatamente igual ao site de ferramentas
+# Dicionário de conversão unificado
 STORES_MAP = {
     'amazon': 'Amazon Global',
     'amazon-br': 'Amazon Brasil',
@@ -28,7 +28,6 @@ def load_data():
         except:
             data = {"products": []}
 
-    # Migração automática: Garante que produtos antigos recebem um ID único fixo
     updated = False
     for p in data.get('products', []):
         if 'id' not in p:
@@ -49,7 +48,6 @@ def save_data(data):
 @app.template_filter('slugify')
 def slugify_filter(s):
     if not s: return ""
-    # Remove parêntesis e barras para bater certo com as âncoras do dashboard
     s = s.replace("(", "").replace(")", "").replace("/", "-")
     return s.lower().replace(" ", "-").replace("&", "")
 
@@ -60,6 +58,10 @@ def index():
     data = load_data()
     all_products = data.get('products', [])
     featured = [p for p in all_products if p.get('featured')]
+
+    for p in featured:
+        p['folder_path'] = str(p.get('image') or p.get('image_url') or '').strip()
+
     return render_template('index.html', products=list(reversed(featured))[:12])
 
 
@@ -67,24 +69,28 @@ def index():
 def produtos(store_name):
     data = load_data()
     all_products = data.get('products', [])
-
     slug = store_name.strip().lower()
 
-    # Se a loja não existir no mapa, mostra página vazia com segurança
     if slug not in STORES_MAP:
         return render_template('produtos.html', products=[], category=store_name.upper())
 
-    # target_brand assume o nome correto unificado (ex: 'AliExpress Global')
-    target_brand = STORES_MAP[slug]
+    target_brand = STORES_MAP[slug].strip().lower()
 
-    # Filtragem precisa respeitando maiúsculas e minúsculas do arquivo JSON
-    store_products = [p for p in all_products if p.get('affiliate') == target_brand]
+    # .strip() remove os espaços invisíveis no fim do texto do JSON automaticamente
+    store_products = [
+        p for p in all_products
+        if str(p.get('affiliate', '')).strip().lower() == target_brand
+    ]
 
     cat_filter = request.args.get('cat')
     if cat_filter:
-        store_products = [p for p in store_products if p.get('category') == cat_filter]
+        store_products = [p for p in store_products if
+                          str(p.get('category', '')).strip().lower() == cat_filter.strip().lower()]
 
-    return render_template('produtos.html', products=store_products, category=target_brand.upper().replace("-", " "))
+    for p in store_products:
+        p['folder_path'] = str(p.get('image') or p.get('image_url') or '').strip()
+
+    return render_template('produtos.html', products=store_products, category=STORES_MAP[slug].upper())
 
 
 @app.route('/admin', methods=['GET', 'POST'])
@@ -98,14 +104,18 @@ def admin():
         return render_template('login.html')
 
     if request.method == 'POST':
+        affiliate = request.form.get('affiliate').strip()
+        prefix = "AMAZON/" if "Amazon" in affiliate else "ALIEXPRESS/"
+        img_raw = request.form.get('image_url').strip()
+
         new_product = {
-            "id": str(uuid.uuid4()),  # Criação da matrícula única do produto
-            "affiliate": request.form.get('affiliate'),
-            "name": request.form.get('name'),
-            "price": request.form.get('price'),
-            "category": request.form.get('category'),
-            "image": request.form.get('image_url'),
-            "link": request.form.get('link'),
+            "id": str(uuid.uuid4()),
+            "affiliate": affiliate,
+            "name": request.form.get('name').strip(),
+            "price": request.form.get('price').strip(),
+            "category": request.form.get('category').strip(),
+            "image": f"{prefix}{img_raw}",
+            "link": request.form.get('link').strip(),
             "featured": True if request.form.get('featured') == 'yes' else False
         }
         data = load_data()
@@ -123,8 +133,11 @@ def dashboard():
     stores_data = {}
 
     for p in all_products:
-        brand = p.get('affiliate') or 'Outros'
-        cat = p.get('category') or 'Geral'
+        brand = str(p.get('affiliate') or 'Outros').strip()
+        cat = str(p.get('category') or 'Geral').strip()
+
+        p['folder_path'] = str(p.get('image') or p.get('image_url') or '').strip()
+
         if brand not in stores_data: stores_data[brand] = {}
         if cat not in stores_data[brand]: stores_data[brand][cat] = []
         stores_data[brand][cat].append(p)
@@ -143,27 +156,31 @@ def edit_product(product_id):
         return redirect(url_for('dashboard'))
 
     if request.method == 'POST':
-        product["affiliate"] = request.form.get('affiliate')
-        product["name"] = request.form.get('name')
-        product["price"] = request.form.get('price')
-        product["category"] = request.form.get('category')
-        product["image"] = request.form.get('image_url')
-        product["link"] = request.form.get('link')
+        affiliate = request.form.get('affiliate').strip()
+        prefix = "AMAZON/" if "Amazon" in affiliate else "ALIEXPRESS/"
+        img_raw = request.form.get('image_url').strip().replace("AMAZON/", "").replace("ALIEXPRESS/", "")
+
+        product["affiliate"] = affiliate
+        product["name"] = request.form.get('name').strip()
+        product["price"] = request.form.get('price').strip()
+        product["category"] = request.form.get('category').strip()
+        product["image"] = f"{prefix}{img_raw}"
+        product["link"] = request.form.get('link').strip()
         product["featured"] = True if request.form.get('featured') == 'yes' else False
 
         save_data(data)
         return redirect(url_for('dashboard'))
 
-    return render_template('edit.html', p=product, product_id=product_id)
+    p_copy = product.copy()
+    p_copy['image'] = p_copy.get('image', '').replace("AMAZON/", "").replace("ALIEXPRESS/", "").strip()
+
+    return render_template('edit.html', p=p_copy, product_id=product_id)
 
 
-# Rota sincronizada para evitar o erro BuildError do dashboard.html
 @app.route('/delete_product/<product_id>')
 def delete_product(product_id):
     if not session.get('logged_in'): return redirect(url_for('admin'))
     data = load_data()
-
-    # Filtra mantendo apenas os produtos que NÃO têm o ID selecionado
     data['products'] = [p for p in data['products'] if p.get('id') != product_id]
     save_data(data)
     return redirect(url_for('dashboard'))
@@ -173,12 +190,10 @@ def delete_product(product_id):
 def toggle_featured(product_id):
     if not session.get('logged_in'): return redirect(url_for('admin'))
     data = load_data()
-
     product = next((p for p in data['products'] if p.get('id') == product_id), None)
     if product:
         product['featured'] = not product.get('featured', False)
         save_data(data)
-
     return redirect(url_for('dashboard'))
 
 

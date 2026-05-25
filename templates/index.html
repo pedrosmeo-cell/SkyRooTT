@@ -35,8 +35,8 @@
             <div class="partners-container">
                 {% set parceiros = [
                     {'name': 'Amazon Global', 'url': 'https://amzn.to'},
-                    {'name': 'AliExpress (PT/ES)', 'url': 'https://aliexpress.com'},
-                    {'name': 'AliExpress (BR)', 'url': 'https://s.click.aliexpress.com/e/_c3ffNQ8h'}
+                    {'name': 'AliExpress Global', 'url': 'https://aliexpress.com'},
+                    {'name': 'AliExpress Brasil', 'url': 'https://aliexpress.com'}
                 ] %}
                 {% for loja in parceiros %}
                 <a href="{{ loja.url }}" target="_blank" rel="nofollow noopener noreferrer" class="partner-btn">
@@ -50,27 +50,57 @@
     </div>
 </div>
 
+<!-- NOVA SECÇÃO: VITRINE DE PRODUTOS DESTACADOS -->
+<section class="highlights-section" style="padding-bottom: 60px;">
+    <div class="section-title-wrapper">
+        <h2 class="section-title">| DESTAQUES DO MÊS</h2>
+        <div class="section-title-line"></div>
+    </div>
+
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px; padding: 0 20px;">
+        {% if products %}
+            {% for p in products %}
+            <div style="background: #fff; border: 1px solid #eee; border-radius: 4px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
+                <div style="padding: 20px; text-align: center;">
+                    <div style="height: 180px; display: flex; align-items: center; justify-content: center; background: #fff; margin-bottom: 15px;">
+                        <!-- Vitrine da Home Corrigida com Subpasta Dinâmica -->
+                        <img src="{{ url_for('static', filename='images/' + p.folder_path) }}" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.src='https://placehold.co';">
+                    </div>
+                    <span style="font-size: 0.6rem; text-transform: uppercase; background: #f1f1f1; padding: 3px 8px; border-radius: 2px; font-weight: bold; color: #666; letter-spacing: 1px;">{{ p.affiliate }}</span>
+                    <h3 style="font-size: 0.85rem; margin: 10px 0; font-weight: 600; line-height: 1.4; color: #1a1a1a; height: 40px; overflow: hidden;">{{ p.name }}</h3>
+                    <p style="font-size: 1rem; font-weight: bold; color: #27ae60; margin: 5px 0;">{{ p.price }}</p>
+                </div>
+                <a href="{{ p.link }}" target="_blank" rel="noopener noreferrer nofollow" style="background: #000; color: #fff; text-decoration: none; text-align: center; padding: 12px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; display: block; border-top: 1px solid #eee;">
+                    Ver Produto ↗
+                </a>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p style="grid-column: 1 / -1; text-align: center; color: #888; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; padding: 40px 0;">Nenhum produto destacado de momento.</p>
+        {% endif %}
+    </div>
+</section>
+
 <!-- SECÇÃO: PORTFÓLIO DE PROJETOS -->
-<section class="highlights-section">
+<section class="highlights-section" style="background: #fafafa; padding-top: 60px;">
 
     <div class="section-title-wrapper">
         <h2 class="section-title">| SKYROOT HUB: PORTFÓLIO DE PROJETOS</h2>
         <div class="section-title-line"></div>
     </div>
 
-    <!-- LISTA DE PORTAIS ORGANIZADA COM BOTÕES DIRETO -->
     <div style="max-width: 1000px; margin: 0 auto; background: #fff; border: 1px solid #eee; padding: 40px; box-sizing: border-box; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
 
         <p style="font-size: 0.85rem; color: #666; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px;">Aceda aos portais oficiais da nossa rede global de ativos:</p>
 
-        <!-- LINK 1: SKYROOT WORKSPACE (ATUALIZADO) -->
+        <!-- LINK 1: SKYROOT WORKSPACE -->
         <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f5f5f5; padding-bottom: 20px; flex-wrap: wrap; gap: 15px;">
             <div>
                 <h3 style="margin: 0; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold;">SKYROOT Tools | OFFICE SOLUTIONS</h3>
                 <p style="margin: 5px 0 0 0; font-size: 0.75rem; color: #888;">Curadoria especializada em Mesas de Escritório, Cadeiras Ergonómicas e Setups Corporativos.</p>
-                <span style="font-size: 0.7rem; color: #3498db; font-family: monospace; display: block; margin-top: 5px;">https://skyroot-tools.onrender.com/</span>
+                <span style="font-size: 0.7rem; color: #3498db; font-family: monospace; display: block; margin-top: 5px;">https://onrender.com</span>
             </div>
-            <a href="https://skyroot-tools.onrender.com/" target="_blank" rel="noopener noreferrer" style="background: #000; color: #fff; text-decoration: none; font-size: 0.65rem; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; padding: 12px 25px; border-radius: 2px; transition: 0.3s;" onmouseover="this.style.background='#3498db';" onmouseout="this.style.background='#000';">
+            <a href="https://onrender.com" target="_blank" rel="noopener noreferrer" style="background: #000; color: #fff; text-decoration: none; font-size: 0.65rem; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; padding: 12px 25px; border-radius: 2px; transition: 0.3s;" onmouseover="this.style.background='#3498db';" onmouseout="this.style.background='#000';">
                 Visitar Site ↗
             </a>
         </div>
